@@ -60,7 +60,7 @@ ul, li {
 
 /* ------------------------------------ */
 .flatbutton {
-	background-color: #008CBA; /* Green */
+	background-color: #008CBA;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -166,32 +166,36 @@ th, td {
 }
 
 .column1 {
-  width: 12%;
-  padding-left: 40px;
+	width: 12%;
+	padding-left: 40px;
 }
 
 .column2 {
-  width: 16%;
+	width: 16%;
 }
 
 .column3 {
-  width: 24%;
+	width: 20%;
 }
 
 .column4 {
-  width: 26%;
+	width: 26%;
 }
 
 .column5 {
-  width: 12%;
+	width: 12%;
 }
 
 .column6 {
-  width: 6%;
+	width: 5%;
 }
 
 .column7 {
-  width: 6%;
+	width: 5%;
+}
+
+.colum8 {
+	width: 4%;
 }
 
 .table100-head th {
