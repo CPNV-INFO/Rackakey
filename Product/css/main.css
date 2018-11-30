@@ -58,38 +58,17 @@ ul, li {
 	list-style-type: none;
 }
 
-
 /* ------------------------------------ */
-input {
-  display: block;
-	outline: none;
-	border: none !important;
-}
-
-textarea {
-  display: block;
-  outline: none;
-}
-
-textarea:focus, input:focus {
-  border-color: transparent !important;
-}
-
-select, input {
-	font-family: Lato-Regular;
-	font-size: 15px;
-	line-height: 1.4;
-}
-
-/* ------------------------------------ */
-button {
-	outline: none !important;
-	border: none;
-	background: transparent;
-}
-
-button:hover {
-	cursor: pointer;
+.flatbutton {
+	background-color: #008CBA; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+	float: right;
 }
 
 iframe {
@@ -550,10 +529,13 @@ th, td {
     display: table-cell;
     vertical-align: middle;
 	text-align: right;
+	float: right;
 }
 
 .toast__cell{
   display:inline-block;
+  position: absolute;
+  right: 5%;
 }
 
 .add-margin{
@@ -655,5 +637,9 @@ th, td {
 }
 
 #toast01 {
+	visibility: hidden;
+}
+
+#toast02 {
 	visibility: hidden;
 }
