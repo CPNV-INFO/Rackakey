@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Modification clé USB</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+<div><h5 style="text-align: right; margin-right: 5%;">CPNV</h5></div>
+<div>	
+	<br><h1 style="margin-left: 5%;">Modification clé USB</h1><br>
+</div>	
+			<div class="wrap-table100">
+				<div class="table100 ver1 m-b-110">
+					<div class="table100-head">
+						<table>
+							<thead>
+								<tr class="row100 head">
+									<th class="cell100 column1">Numéro Clé</th>
+									<th class="cell100 column2">Etat</th>
+									<th class="cell100 column3">Port rack</th>
+									<th class="cell100 column4">Réservé par</th>
+									<th class="cell100 column5">Espace libre</th>
+									<th class="cell100 column6">Actions
+								</tr>
+							</thead>
+						</table>
+					</div>
+
+					<div class="table100-body js-pscroll">
+						<table>
+							<tbody>
+								<tr class="row100 body">
+									<td class="cell100 column1">1</td>
+									<td class="cell100 column2"><select name="disponibility" required><option>Disponible<option>Présente<option>Absente<option>Utilisée</select></td>
+									<td class="cell100 column3">Rack <input type="number" name="rack" value="1" min="1" max="2" style="display: inline; width: 50px;" required> - Port <input type="number" name="port" value="1" min="1" max="6" style="display: inline; width: 50px;" required></td>
+									<td class="cell100 column4"><input type="text" name="prof" value="Nicolas Glassey" required></td>
+									<td class="cell100 column5">8Gb</td>
+									<td class="cell100 column6"><a href="index.html"><img src="images/icons/save.png" height="30px"></a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+<!--===============================================================================================-->	
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+	<script>
+		$('.js-pscroll').each(function(){
+			var ps = new PerfectScrollbar(this);
+
+			$(window).on('resize', function(){
+				ps.update();
+			})
+		});
+			
+		
+	</script>
+</body>
+</html>
