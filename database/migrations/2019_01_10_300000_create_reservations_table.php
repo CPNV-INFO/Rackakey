@@ -17,8 +17,10 @@ class CreateReservationsTable extends Migration
             $table->increments('id');
             $table->dateTime('date_reserved');
             $table->dateTime('date_returned');
+            $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('status_id')->references('id')->on('status');
+            $table->integer('file_id')->unsigned();
+            $table->foreign('file_id')->references('id')->on('files');
             $table->timestamps();
         });
     }

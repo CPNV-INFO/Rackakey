@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReservationUsbTable extends Migration
+class CreateFilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateReservationUsbTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservation_usb', function (Blueprint $table) {
+        Schema::create('files', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('reservation_id')->unsigned();
-            $table->foreign("reservation_id")->references("id")->on("reservations");
-            $table->integer('usb_id')->unsigned();
-            $table->foreign("usb_id")->references("id")->on("usbs");
+            $table->string("nameOfCompressedFile");
+            $table->string("hash");
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateReservationUsbTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation_usb_table');
+        Schema::dropIfExists('files');
     }
 }
