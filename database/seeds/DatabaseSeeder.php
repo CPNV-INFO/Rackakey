@@ -16,7 +16,9 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             StatusTableSeeder::class,
             UsbTableSeeder::class,
-            FileTableSeeder::class
+            FileTableSeeder::class,
+            ReservationTableSeeder::class,
+            ReservationUsbTableSeeder::class
         ]);
     }
 }

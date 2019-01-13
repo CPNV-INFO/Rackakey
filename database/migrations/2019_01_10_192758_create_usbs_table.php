@@ -31,6 +31,9 @@ class CreateUsbsTable extends Migration
      */
     public function down()
     {
+        Schema::table('usbs', function (Blueprint $table) {
+            $table->dropForeign('status_id');
+        });
         Schema::dropIfExists('usbs');
     }
 }

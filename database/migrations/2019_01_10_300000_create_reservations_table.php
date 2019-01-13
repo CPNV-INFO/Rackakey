@@ -16,10 +16,10 @@ class CreateReservationsTable extends Migration
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->dateTime('date_reserved');
-            $table->dateTime('date_returned');
+            $table->dateTime('date_returned')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('file_id')->unsigned();
+            $table->integer('file_id')->unsigned()->nullable();
             $table->foreign('file_id')->references('id')->on('files');
             $table->timestamps();
         });
@@ -32,6 +32,10 @@ class CreateReservationsTable extends Migration
      */
     public function down()
     {
+        Schema::table('reservations', function (Blueprint $table) {
+            $table->dropForeign('file_id');
+            $table->dropForeign('user_id');
+        });
         Schema::dropIfExists('reservations');
     }
 }

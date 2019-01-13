@@ -30,6 +30,10 @@ class CreateReservationUsbTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation_usb_table');
+        Schema::table('reservation_usb', function (Blueprint $table) {
+            $table->dropForeign('reservation_id');
+            $table->dropForeign('usb_id');
+        });
+        Schema::dropIfExists('reservation_usb');
     }
 }

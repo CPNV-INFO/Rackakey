@@ -15,10 +15,3 @@ $factory->define(App\Usb::class, function (Faker $faker) {
         'updated_at' => now()
     ];
 });
-
-$factory->afterCreating(App\Usb::class, function ($usb, $faker) {
-   Log::debug($usb);
-   if($usb["status_id"] == App\Status::present()){ // The key is present so it should have been reserved by someone, let's fill the database for that
-
-   }
-});
