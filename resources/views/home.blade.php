@@ -2,7 +2,7 @@
 
 @section('content')
     <div>
-        <h5 style="text-align: right; margin-right: 5%;">CPNV</h5></div>
+        <h5 style="text-align: right; margin-right: 5%;">{{ $user }}</h5></div>
     <div>
         <br><h1 style="margin-left: 5%;">Gestion rack à clés USB</h1><br>
     </div>
@@ -29,144 +29,25 @@
 
             <!-- All table lines -->
 
-            @foreach ($usb as $availableUsbs)
-            <div class="table100-body js-pscroll">
-                <table>
-                    <tbody>
-                    <tr class="row100 body">
-                        <td class="cell100 column1">1</td>
-                        <td class="cell100 column2">Disponible</td>
-                        <td class="cell100 column3">Rack 1 - Port 1</td>
-                        <td class="cell100 column4">-</td>
-                        <td class="cell100 column5">8Gb</td>
-                        <td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>
-                        <td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;" style="margin-right:25px;"></a></td>
-                        <td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=1"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            @foreach ($usb as $actualUsb)
+                <div class="table100-body js-pscroll">
+                    <table>
+                        <tbody>
+                        <tr class="row100 body">
+                            <td class="cell100 column1"> {{ $actualUsb->id }}</td>
+                            <td class="cell100 column2">{{ $actualUsb->status->name }}</td>
+                            <td class="cell100 column3">Rack 1 - Port 1</td>
+                            <td class="cell100 column4">-</td>
+                            <td class="cell100 column5"> {{ $actualUsb->freeKbyteSpace }}kb</td>
+                            <td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>
+                            <td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;" style="margin-right:25px;"></a></td>
+                            <td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=1"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             @endforeach
 
-
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">2</td>--}}
-                        {{--<td class="cell100 column2">Présente</td>--}}
-                        {{--<td class="cell100 column3">Rack 1 - Port 2</td>--}}
-                        {{--<td class="cell100 column4">François Girardier</td>--}}
-                        {{--<td class="cell100 column5">7.7Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=2"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-
-
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">3</td>--}}
-                        {{--<td class="cell100 column2">Absente</td>--}}
-                        {{--<td class="cell100 column3">-</td>--}}
-                        {{--<td class="cell100 column4">-</td>--}}
-                        {{--<td class="cell100 column5">6Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=3"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-
-
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">4</td>--}}
-                        {{--<td class="cell100 column2">Présente</td>--}}
-                        {{--<td class="cell100 column3">Rack 1 - Port 4</td>--}}
-                        {{--<td class="cell100 column4">Patrick Altieri</td>--}}
-                        {{--<td class="cell100 column5">5.5Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=4"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-
-
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">5</td>--}}
-                        {{--<td class="cell100 column2">Présente</td>--}}
-                        {{--<td class="cell100 column3">Rack 1 - Port 5</td>--}}
-                        {{--<td class="cell100 column4">Patrick Altieri</td>--}}
-                        {{--<td class="cell100 column5">3.5Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=5"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">6</td>--}}
-                        {{--<td class="cell100 column2">Utilisée</td>--}}
-                        {{--<td class="cell100 column3">-</td>--}}
-                        {{--<td class="cell100 column4">Nicolas Glassey</td>--}}
-                        {{--<td class="cell100 column5">2.1Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=6"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">7</td>--}}
-                        {{--<td class="cell100 column2">Absente</td>--}}
-                        {{--<td class="cell100 column3">-</td>--}}
-                        {{--<td class="cell100 column4">-</td>--}}
-                        {{--<td class="cell100 column5">3.7Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=1&usbKeyPort=7"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
-            {{--<div class="table100-body js-pscroll">--}}
-                {{--<table>--}}
-                    {{--<tbody>--}}
-                    {{--<tr class="row100 body">--}}
-                        {{--<td class="cell100 column1">8</td>--}}
-                        {{--<td class="cell100 column2">Utilisée</td>--}}
-                        {{--<td class="cell100 column3">-</td>--}}
-                        {{--<td class="cell100 column4">Stéphane Delaporte</td>--}}
-                        {{--<td class="cell100 column5">2.5Gb</td>--}}
-                        {{--<td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>--}}
-                        {{--<td class="cell100 column7"><a href="#"><img src="images/icons/download.png" title="Télécharger toutes les données en local puis réinitialiser la clé USB" height="40px" style="margin-right:25px;"></a></td>--}}
-                        {{--<td class="cell100 column8"><a href="./encode_explorer/index.php?usbRack=2&usbKeyPort=1"><img src="images/icons/folder.png" title="Explorer" height="40px"></a></td>--}}
-                    {{--</tr>--}}
-                    {{--</tbody>--}}
-                {{--</table>--}}
-            {{--</div>--}}
             <a href="addreservation.html" class="flatbutton" name="addreservation">Créer une réservation</a>
         </div>
     </div>
