@@ -23,6 +23,8 @@ class UsbTableSeeder extends Seeder
             'uuid' => $faker->uuid(),
             'freeKbyteSpace' => 0,
             'status_id' => App\Status::available(),
+            'rack_number' => $faker->numberBetween(0, 5),
+            'port_number' => $faker->numberBetween(0, 14),
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -33,6 +35,8 @@ class UsbTableSeeder extends Seeder
             'uuid' => $faker->uuid(),
             'freeKbyteSpace' => 31142707,
             'status_id' => App\Status::available(),
+            'rack_number' => $faker->numberBetween(0, 5),
+            'port_number' => $faker->numberBetween(0, 14),
             'created_at' => now(),
             'updated_at' => now()
         ]);

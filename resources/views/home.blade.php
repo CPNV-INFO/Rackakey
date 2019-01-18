@@ -6,6 +6,7 @@
     <div>
         <br><h1 style="margin-left: 5%;">Gestion rack à clés USB</h1><br>
     </div>
+    <a href="/disconnect"> <button type="submit">Logout</button></a>
     <div class="wrap-table100">
         <div class="table100 ver1 m-b-110">
 
@@ -29,14 +30,15 @@
 
             <!-- All table lines -->
 
-            @foreach ($usb as $actualUsb)
+            @foreach ($usbs as $actualUsb)
+                @if (Auth::user()->can('view', $actualUsb))
                 <div class="table100-body js-pscroll">
                     <table>
                         <tbody>
                         <tr class="row100 body">
                             <td class="cell100 column1"> {{ $actualUsb->id }}</td>
                             <td class="cell100 column2">{{ $actualUsb->status->name }}</td>
-                            <td class="cell100 column3">Rack 1 - Port 1</td>
+                            <td class="cell100 column3">Rack {{ $actualUsb->rack_number }} - Port {{ $actualUsb->port_number }}</td>
                             <td class="cell100 column4">-</td>
                             <td class="cell100 column5"> {{ $actualUsb->freeKbyteSpace }}kb</td>
                             <td class="cell100 column6"><a href="#" onclick="delUSBKey()"><img src="images/icons/delete.png" height="40px"></a></td>
@@ -46,6 +48,7 @@
                         </tbody>
                     </table>
                 </div>
+                @endif
             @endforeach
 
             <a href="addreservation.html" class="flatbutton" name="addreservation">Créer une réservation</a>

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\UsbPolicy;
+use App\Usb;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -14,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
+        Usb::class => UsbPolicy::class,
     ];
 
     /**
@@ -25,6 +28,6 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        Gate::resource('usbs', 'App\Policies\UsbPolicy');
     }
 }

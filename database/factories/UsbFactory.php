@@ -11,6 +11,8 @@ $factory->define(App\Usb::class, function (Faker $faker) {
         'uuid' => $faker->uuid(),
         'freeKbyteSpace' => $faker->numberBetween(0, 31142707), // Between 0 and 31142707 kbyte available
         'status_id' => $faker->randomElement($status),
+        'rack_number' => $faker->numberBetween(0, 5),
+        'port_number' => $faker->numberBetween(0, 14),
         'created_at' => now(),
         'updated_at' => now()
     ];

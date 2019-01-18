@@ -19,6 +19,8 @@ class CreateUsbsTable extends Migration
             $table->string('uuid');
             $table->integer('freeKbyteSpace');
             $table->integer('status_id')->unsigned();
+            $table->integer('rack_number');
+            $table->integer('port_number');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->timestamps();
         });

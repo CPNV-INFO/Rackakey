@@ -16,6 +16,8 @@
 //});
 
 
-//Auth::routes();
+Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'Auth\LoginController@showLoginForm');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/disconnect', 'UserController@logout');

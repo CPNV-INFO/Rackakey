@@ -11,14 +11,14 @@ class Role extends Model
     }
 
     public function scopeAdmin($query){
-        return $query->where('name', 'admin');
+        return $query->where('name', 'admin')->first()->id;
     }
 
     public function scopeSecretary($query){
-        return $query->where('name', 'secretary');
+        return $query->where('name', 'secretary')->first()->id;
     }
 
     public function scopeProfessor($query){
-        return $query->where('name', 'professor');
+        return $query->where('name', 'professor')->first()->id;
     }
 }
