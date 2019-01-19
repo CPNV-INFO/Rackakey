@@ -50,4 +50,16 @@ class UserPolicy
 
         return false;
     }
+
+    /**
+     * Determine whether the user can the soft deletes. Here we don't put anything in it because only
+     * admin can see them (and he's already granted for all policies in \Providers\AuthServiceProvider.php)
+     *
+     * @param User $user
+     * @return bool
+     */
+    public function viewSoftDelete(User $user){
+
+        return false;
+    }
 }

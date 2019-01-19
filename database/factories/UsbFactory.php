@@ -3,7 +3,7 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Usb::class, function (Faker $faker) {
-    $status = App\Status::pluck('id')->toArray();
+    $status = App\Status::where('id', '!=' , \App\Status::alreadyDeleted())->get();
 
     return [
         'name' => $faker->randomElement(

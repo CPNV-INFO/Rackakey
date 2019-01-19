@@ -11,6 +11,10 @@ class Reservation extends Model
     }
 
     public function usb(){
+        return $this->hasMany('App\Usb');
+    }
+
+    public function usbs(){
         return $this->belongsToMany('App\Usb');
     }
 

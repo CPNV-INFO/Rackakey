@@ -3,14 +3,23 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Usb extends Model
 {
+    use SoftDeletes;
+    
+    protected $dates = ['deleted_at'];
+
     public function status(){
         return $this->belongsTo('App\Status');
     }
 
     public function reservation(){
+        return $this->belongsToMany('App\Reservation');
+    }
+
+    public function reservations(){
         return $this->belongsToMany('App\Reservation');
     }
 

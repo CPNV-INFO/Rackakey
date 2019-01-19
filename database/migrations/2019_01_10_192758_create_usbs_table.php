@@ -23,6 +23,7 @@ class CreateUsbsTable extends Migration
             $table->integer('port_number');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

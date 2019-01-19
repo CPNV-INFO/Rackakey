@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
+    public $timestamps = false;
+
     public function usb(){
         return $this->hasOne('App\Usb');
     }
@@ -28,5 +30,10 @@ class Status extends Model
 
     public function scopeNotInitialized($query){
         return $query->where('name', 'Non Initialisée')->first()->id;
+    }
+
+    // Here we don't use scopeDeleted as a name because deleted() already exists in query
+    public function scopeAlreadyDeleted($query){
+        return $query->where('name', 'Supprimée')->first()->id;
     }
 }

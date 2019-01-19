@@ -12,33 +12,29 @@ class StatusTableSeeder extends Seeder
     public function run()
     {
         DB::table('statuses')->insert([
+            'name' => 'Supprimée',
+        ]);
+
+        DB::table('statuses')->insert([
             'name' => 'Disponible',
-            'created_at' => now(),
-            'updated_at' => now()
         ]);
 
         DB::table('statuses')->insert([
             'name' => 'Présente',
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        DB::table('statuses')->insert([
-            'name' => 'Absente',
-            'created_at' => now(),
-            'updated_at' => now()
         ]);
 
         DB::table('statuses')->insert([
             'name' => 'Utilisée',
-            'created_at' => now(),
-            'updated_at' => now()
+        ]);
+
+        DB::table('statuses')->insert([
+            'name' => 'Absente',
         ]);
 
         DB::table('statuses')->insert([
             'name' => 'Non Initialisée',
-            'created_at' => now(),
-            'updated_at' => now()
         ]);
+
+
     }
 }

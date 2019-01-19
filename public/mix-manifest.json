@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/css/main.css": "/css/main.css",
     "/css/util.css": "/css/util.css",
+    "/css/bootstrap/bootstrap.css": "/css/bootstrap/bootstrap.css",
     "/js/bootstrap/bootstrap.js": "/js/bootstrap/bootstrap.js",
     "/js/rackakey.js": "/js/rackakey.js"
 }

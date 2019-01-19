@@ -1,4 +1,5 @@
-<form method="post" action="/delete/{{ $actualUsb->id }}" class="usbDelete">
+<form method="post" action="/usbs/{{ $actualUsb->id }}" class="usbDelete">
     @csrf
-    <button type="submit">Supprimer</button>
+    @method('DELETE')
+    <button type="submit" class="btn btn-danger">Supprimer</button>
 </form>

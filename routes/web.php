@@ -20,3 +20,6 @@ Auth::routes();
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('usbs','UsbController');
+Route::post('usbs/restore/{id}','UsbController@restore');
+Route::post('usbs/initialize/{id}','UsbController@initialize');

@@ -21,8 +21,6 @@ class UsbPolicy
      */
     public function view(User $user, Usb $usb)
     {
-
-
         if ($user->role->id == Role::professor()) {
             if ($usb->status->id == Status::available())
                 return true;

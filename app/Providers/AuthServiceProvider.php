@@ -32,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // https://laravel.com/docs/5.7/authorization#intercepting-gate-checks
+        // https://laravel.com/docs/5.7/authorization#intercepting-gate-checks --> Grant admin all policies
         Gate::before(function ($user, $ability) {
             if ($user->role->id == Role::admin())
                 return true;
@@ -40,7 +40,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::resource('usbs', 'App\Policies\UsbPolicy');
         Gate::define('viewReservedFrom','App\Policies\UserPolicy@viewReservedFrom');
-//        Gate::define('viewDeleteUsb',   'App\Policies\UserPolicy@viewDeleteUsb');
         Gate::define('viewActionColumn',   'App\Policies\UserPolicy@viewActionColumn');
+        Gate::define('viewSoftDelete',   'App\Policies\UserPolicy@viewSoftDelete');
     }
 }

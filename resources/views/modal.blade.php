@@ -22,12 +22,14 @@
                     Espace disponible actuel: <b id="deleteModalUsbFreeSpace"></b>
                 </p>
                 <p>
-                    Créée (insérée pour la première fois dans le hub): <b id="deleteModalUsbCreatedAt"></b>
+                    Créée (insérée pour la toute première fois dans le hub, soit en mode "non initialisée"):<br/>
+                    <b id="deleteModalUsbCreatedAt"></b>
                 </p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" id="modalDeleteButton">Supprimer</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" od="modalCloseButton">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" od="modalCloseButton">Close
+                </button>
             </div>
         </div>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Status;
 use App\Usb;
 use http\Client\Curl\User;
@@ -28,8 +29,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->firstName . ' ' . Auth::user()->lastName;
+        $user = Auth::user()->firstName . '.' . strtoupper(Auth::user()->lastName);
 
-        return view('home', ["usbs" => Usb::all(), "user" => $user]);
+        if(Auth::user()->status == Role::professor()){
+            $usbs = Usb::all();
+        }else{
+            $usbs = Usb::orderBy('status_id', 'desc')->get();
+
+            if(Auth::user()->can('viewSoftDelete')){
+                $usbs = Usb::orderBy('status_id', 'desc')->withTrashed()->get();
+            }
+        }
+
+        return view('home', ["usbs" => $usbs, "user" => $user]);
     }
 }

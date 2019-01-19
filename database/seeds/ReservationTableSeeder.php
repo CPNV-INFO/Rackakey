@@ -16,12 +16,17 @@ class ReservationTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        $presentOrUsedUsbs = App\Usb::where('status_id', '=', App\Status::present())->orWhere('status_id', '=', App\Status::used())->get();
+        $usbs = App\Usb::where('status_id', '=', App\Status::present())
+                                    ->orWhere('status_id', '=', App\Status::used())
+                                    ->orWhere('status_id', '=', App\Status::available())
+                                    ->orWhere('status_id', '=', App\Status::absent())
+                                    ->get();
+
         $professorUsers = App\User::where('role_id', '=', App\Role::professor())->pluck("id");
         $files = App\File::all()->pluck("id");
         $files->push(null);
 
-        foreach ($presentOrUsedUsbs as $usb) {
+        foreach ($usbs as $usb) {
             $randomFile = $faker->randomElement($files);
             $randomProfessor = $faker->randomElement($professorUsers);
 
@@ -40,7 +45,7 @@ class ReservationTableSeeder extends Seeder
                 unset($files[$key]);
             }
 
-            if ($key == count($presentOrUsedUsbs) / 2) { // We make this so there is usbs keys that are not assigned to only one reservation but that could be reserved with others usbs at the same time
+            if ($key == count($usbs) - 4) { // We make this so there is usbs keys that are not assigned to only one reservation but that could be reserved with others usbs at the same time
                 break;
             }
         }
