@@ -16,16 +16,18 @@ class ReservationTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        $presentOrUsedUsbs    = App\Usb::where('status_id', '=', App\Status::present())->orWhere('status_id', '=', App\Status::used()) ->get();
+        $presentOrUsedUsbs = App\Usb::where('status_id', '=', App\Status::present())->orWhere('status_id', '=', App\Status::used())->get();
         $professorUsers = App\User::where('role_id', '=', App\Role::professor())->pluck("id");
-        $files          = App\File::all()->pluck("id");
+        $files = App\File::all()->pluck("id");
         $files->push(null);
 
-        foreach($presentOrUsedUsbs as $usb){
+        foreach ($presentOrUsedUsbs as $usb) {
             $randomFile = $faker->randomElement($files);
             $randomProfessor = $faker->randomElement($professorUsers);
 
             DB::table('reservations')->insert([
+                'name' => $faker->randomElement(["USB_EXA_", "USB_EXA", "EXA_USB_", "EXA_USB", "EXA", ""])
+                    . $faker->randomElement(["GUI1", "PRW1", "CLD1", "GPR1", "SQL1", "UML1", "GUI2", "PRW2", "MAW", "XML1", "ITIL"]),
                 'date_reserved' => now(),
                 'date_returned' => null,
                 'user_id' => $randomProfessor,
@@ -38,7 +40,7 @@ class ReservationTableSeeder extends Seeder
                 unset($files[$key]);
             }
 
-            if($key == count($presentOrUsedUsbs)/2){ // We make this so there is usbs keys that are not assigned to only one reservation but that could be reserved with others usbs at the same time
+            if ($key == count($presentOrUsedUsbs) / 2) { // We make this so there is usbs keys that are not assigned to only one reservation but that could be reserved with others usbs at the same time
                 break;
             }
         }

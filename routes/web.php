@@ -20,4 +20,3 @@ Auth::routes();
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/disconnect', 'UserController@logout');

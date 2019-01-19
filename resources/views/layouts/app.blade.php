@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
     <!--===============================================================================================-->
     <script src="{{ asset('js/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('js/rackakey.js') }}"></script>
     <script>
         jQuery(document).ready(function(){
             jQuery('.toast__close').click(function(e){

@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
 
@@ -652,5 +654,26 @@ td {
 
 #toast02 {
   visibility: hidden;
+}
+
+/* Partie ci-dessous faite par Dardan. Toute celle du haut (non-sass) a été faite par Niels.
+   --> Si le temps, TOUT faire en sass */
+
+.used td,
+.absent td,
+.not-initialized td {
+  color: white !important;
+}
+
+.not-initialized {
+  background-color: #8D8D8D;
+}
+
+.absent {
+  background-color: #EF7273;
+}
+
+.used {
+  background-color: #6977DB;
 }
 

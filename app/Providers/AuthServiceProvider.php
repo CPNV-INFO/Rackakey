@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Policies\UsbPolicy;
+use App\Policies\UserPolicy;
+use App\Role;
 use App\Usb;
+use App\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -17,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         Usb::class => UsbPolicy::class,
+        User::class => UserPolicy::class,
     ];
 
     /**
@@ -28,6 +32,15 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // https://laravel.com/docs/5.7/authorization#intercepting-gate-checks
+        Gate::before(function ($user, $ability) {
+            if ($user->role->id == Role::admin())
+                return true;
+        });
+
         Gate::resource('usbs', 'App\Policies\UsbPolicy');
+        Gate::define('viewReservedFrom','App\Policies\UserPolicy@viewReservedFrom');
+//        Gate::define('viewDeleteUsb',   'App\Policies\UserPolicy@viewDeleteUsb');
+        Gate::define('viewActionColumn',   'App\Policies\UserPolicy@viewActionColumn');
     }
 }

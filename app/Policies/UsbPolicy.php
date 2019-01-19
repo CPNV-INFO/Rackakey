@@ -22,6 +22,7 @@ class UsbPolicy
     public function view(User $user, Usb $usb)
     {
 
+
         if ($user->role->id == Role::professor()) {
             if ($usb->status->id == Status::available())
                 return true;
@@ -36,39 +37,8 @@ class UsbPolicy
                 return true;
 
             return false;
-        } else if ($user->role->id == Role::admin()) {
-            if ($usb->status->id == Status::available() ||
-                $usb->status->id == Status::present() ||
-                $usb->status->id == Status::absent() ||
-                $usb->status->id == Status::used() ||
-                $usb->status->id == Status::notInitialized())
-                return true;
         }
     }
-
-    /**
-     *
-     *
-     * public function scopeAvailable($query){
-     * return $query->where('name', 'Disponible')->first()->id;
-     * }
-     *
-     * public function scopePresent($query){
-     * return $query->where('name', 'Présente')->first()->id;
-     * }
-     *
-     * public function scopeAbsent($query){
-     * return $query->where('name', 'Absente')->first()->id;
-     * }
-     *
-     * public function scopeUsed($query){
-     * return $query->where('name', 'Utilisée')->first()->id;
-     * }
-     *
-     * public function scopeNotInitialized($query){
-     * return $query->where('name', 'Non Initialisée')->first()->id;
-     * }
-     */
 
     /**
      * Determine whether the user can delete the usb.
@@ -79,7 +49,7 @@ class UsbPolicy
      */
     public function delete(User $user, Usb $usb)
     {
-        if ($user->role() == Role::secretary()) {
+        if ($user->role->id == Role::secretary()) {
             if ($usb->status->id == Status::available() ||
                 $usb->status->id == Status::present() ||
                 $usb->status->id == Status::absent() ||
@@ -88,13 +58,6 @@ class UsbPolicy
                 return true;
 
             return false;
-        } else if ($user->role() == Role::admin()) {
-            if ($usb->status->id == Status::available() ||
-                $usb->status->id == Status::present() ||
-                $usb->status->id == Status::absent() ||
-                $usb->status->id == Status::used() ||
-                $usb->status->id == Status::notInitialized())
-                return true;
         }
         return false;
     }

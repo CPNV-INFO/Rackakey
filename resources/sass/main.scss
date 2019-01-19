@@ -6,12 +6,12 @@
 
 @font-face {
   font-family: Lato-Regular;
-  src: url('../../../old/Rackakey_Niels/Product/fonts/Lato/Lato-Regular.ttf');
+  src: url('../fonts/Lato-Regular.ttf');
 }
 
 @font-face {
   font-family: Lato-Bold;
-  src: url('../../../old/Rackakey_Niels/Product/fonts/Lato/Lato-Bold.ttf');
+  src: url('../fonts/Lato-Bold.ttf');
 }
 
 /*//////////////////////////////////////////////////////////////////
@@ -652,3 +652,34 @@ th, td {
 #toast02 {
 	visibility: hidden;
 }
+
+/* Partie ci-dessous faite par Dardan. Toute celle du haut (non-sass) a été faite par Niels.
+   --> Si le temps, TOUT faire en sass */
+
+$black: #0C0C0C;
+$darkGrey: #8D8D8D;
+$lightGrey: #F2F2F2;
+$red: #EF7273;
+$blue: #6977DB;
+
+%force-white-color-td{
+  td{
+    color: white !important;
+  }
+}
+
+.not-initialized{
+  background-color: $darkGrey;
+  @extend %force-white-color-td;
+}
+
+.absent{
+  background-color: $red;
+  @extend %force-white-color-td;
+}
+
+.used{
+  background-color: $blue;
+  @extend %force-white-color-td;
+}
+

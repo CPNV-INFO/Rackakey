@@ -28,12 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (env('ACTUAL_USER', -1) === -1) {
-            return response('<h3>ACTUAL_USER not found into .env. <br/>
-            Please create a default ACTUAL_USER="professor" or ACTUAL_USER="secretary" or ACTUAL_USER="admin" in it</h3> ', 500);
-        }
-
-        $user = Auth::user()->getAuthIdentifier() . ' ' . Auth::user()->getAuthIdentifierName();
+        $user = Auth::user()->firstName . ' ' . Auth::user()->lastName;
 
         return view('home', ["usbs" => Usb::all(), "user" => $user]);
     }
