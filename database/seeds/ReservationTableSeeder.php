@@ -16,11 +16,7 @@ class ReservationTableSeeder extends Seeder
 
         $faker = Faker::create();
 
-        $usbs = App\Usb::where('status_id', '=', App\Status::present())
-                                    ->orWhere('status_id', '=', App\Status::used())
-                                    ->orWhere('status_id', '=', App\Status::available())
-                                    ->orWhere('status_id', '=', App\Status::absent())
-                                    ->get();
+        $usbs = App\Usb::where('status_id', '=', App\Status::active())->get();
 
         $professorUsers = App\User::where('role_id', '=', App\Role::professor())->pluck("id");
         $files = App\File::all()->pluck("id");

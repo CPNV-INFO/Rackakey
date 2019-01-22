@@ -14,11 +14,7 @@ class ReservationUsbTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $presentOrUsedUsbs = App\Usb::where('status_id', '=', App\Status::present())
-            ->orWhere('status_id', '=', App\Status::used())
-            ->orWhere('status_id', '=', App\Status::available())
-            ->orWhere('status_id', '=', App\Status::absent())
-            ->pluck("id");
+        $presentOrUsedUsbs = App\Usb::where('status_id', '=', App\Status::active())->pluck("id");
         $reservations = App\Reservation::all()->pluck("id");
 
         foreach ($presentOrUsedUsbs as $usb) {

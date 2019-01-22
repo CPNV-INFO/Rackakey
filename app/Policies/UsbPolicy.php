@@ -21,21 +21,22 @@ class UsbPolicy
      */
     public function view(User $user, Usb $usb)
     {
-        if ($user->role->id == Role::professor()) {
-            if ($usb->status->id == Status::available())
-                return true;
+        return true;
+//        if ($user->role->id == Role::professor()) {
+//            if ($usb->status->id == Status::available())
+//                return true;
+//
+//            return false;
+//        } else if ($user->role->id == Role::secretary()) {
+//            if ($usb->status->id == Status::available() ||
+//                $usb->status->id == Status::present() ||
+//                $usb->status->id == Status::absent() ||
+//                $usb->status->id == Status::used() ||
+//                $usb->status->id == Status::notInitialized())
+//                return true;
 
-            return false;
-        } else if ($user->role->id == Role::secretary()) {
-            if ($usb->status->id == Status::available() ||
-                $usb->status->id == Status::present() ||
-                $usb->status->id == Status::absent() ||
-                $usb->status->id == Status::used() ||
-                $usb->status->id == Status::notInitialized())
-                return true;
-
-            return false;
-        }
+//            return false;
+//        }
     }
 
     /**
@@ -47,15 +48,9 @@ class UsbPolicy
      */
     public function delete(User $user, Usb $usb)
     {
-        if ($user->role->id == Role::secretary()) {
-            if ($usb->status->id == Status::available() ||
-                $usb->status->id == Status::present() ||
-                $usb->status->id == Status::absent() ||
-                $usb->status->id == Status::used() ||
-                $usb->status->id == Status::notInitialized())
-                return true;
 
-            return false;
+        if ($user->role->id == Role::secretary()) {
+                return true;
         }
         return false;
     }
@@ -69,7 +64,7 @@ class UsbPolicy
      */
     public function restore(User $user, Usb $usb)
     {
-        //
+        // Only admin can restore a key but he already can do everything so we put nothing here
     }
 
     /**
@@ -81,6 +76,6 @@ class UsbPolicy
      */
     public function forceDelete(User $user, Usb $usb)
     {
-        //
+
     }
 }

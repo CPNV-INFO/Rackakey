@@ -1,4 +1,4 @@
-@if($actualUsb->status->id == \App\Status::absent())
+@if($actualUsb->absent())
 
     <td class=" ">
     </td>
@@ -10,17 +10,17 @@
     <td class=" ">
     </td>
 
-@elseif($actualUsb->status->id == \App\Status::available() ||
-        $actualUsb->status->id == \App\Status::notInitialized() ||
-        $actualUsb->status->id == \App\Status::present())
+@elseif($actualUsb->available() ||
+        $actualUsb->notInitialized() ||
+        $actualUsb->present())
 
     <td class=" ">
-        @if($actualUsb->status->id != \App\Status::present())
+        @if($actualUsb->present())
             @include('usbActionButtons.delete')
         @endif
     </td>
 
-    @if($actualUsb->status->id == \App\Status::notInitialized())
+    @if($actualUsb->notInitialized())
         <td class=" ">
             @include('usbActionButtons.initialize')
         </td>
@@ -34,7 +34,7 @@
         @include('usbActionButtons.explore')
     </td>
 
-@elseif($actualUsb->status->id == \App\Status::alreadyDeleted())
+@elseif($actualUsb->alreadyDeleted())
 
     <td class=" ">
     </td>
