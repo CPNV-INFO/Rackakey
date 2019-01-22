@@ -34,27 +34,25 @@
         <tbody>
         <!-- All table lines -->
 
-        @foreach ($usbs as $actualUsb)
-            {{ $actualUsb->isReserved() }}
-            @if (Auth::user()->can('view', $actualUsb))
-                <tr data-usbname="{{ $actualUsb->name }}"
-                    data-reservationusbcount="{{ $actualUsb->reservations()->count() }}"
-                    data-usbfreespace="{{  \App\Usb::formatFileSize( $actualUsb->freeSpaceInBytes) }}"
-                    data-createdat="{{ $actualUsb->created_at }}">
+        @foreach ($availableUsbs as $usb)
 
-                    {{--@include('mainTable.usbIdColumn')--}}
-                    @include('mainTable.usbStatusColumn')
-                    @include('mainTable.usbRackPortNumberColumn')
-                    @include('mainTable.usbNameColumn')
-                    {{--@if (Auth::user()->can('viewReservedFrom'))--}}
-                        @include('mainTable.usbReservationColumn')
-                    {{--@endif--}}
-                    @include('mainTable.usbFreeSpaceColumn')
-                    {{--@if (Auth::user()->can('viewActionColumn'))--}}
-                        @include('mainTable.usbActionsColumn')
-                    {{--@endif--}}
-                </tr>
-            @endif
+            <tr data-usbname="{{ $actualUsb->name }}"
+                data-reservationusbcount="{{ $actualUsb->reservations()->count() }}"
+                data-usbfreespace="{{  \App\Usb::formatFileSize( $actualUsb->freeSpaceInBytes) }}"
+                data-createdat="{{ $actualUsb->created_at }}">
+
+                {{--@include('mainTable.usbIdColumn')--}}
+                @include('mainTable.usbStatusColumn')
+                @include('mainTable.usbRackPortNumberColumn')
+                @include('mainTable.usbNameColumn')
+                {{--@if (Auth::user()->can('viewReservedFrom'))--}}
+                @include('mainTable.usbReservationColumn')
+                {{--@endif--}}
+                @include('mainTable.usbFreeSpaceColumn')
+                {{--@if (Auth::user()->can('viewActionColumn'))--}}
+                @include('mainTable.usbActionsColumn')
+                {{--@endif--}}
+            </tr>
 
         @endforeach
         </tbody>

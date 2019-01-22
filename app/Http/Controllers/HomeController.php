@@ -30,14 +30,15 @@ class HomeController extends Controller
     public function index()
     {
         $user = Auth::user()->firstName . '.' . strtoupper(Auth::user()->lastName);
-        $usbs = Usb::orderBy('status_id')->get();
-
-        if(Auth::user()->can('viewSoftDelete')){
-            $usbs = Usb::orderBy('status_id', 'desc')->withTrashed()->get();
-
-        }
 
 
-        return view('home', ["usbs" => $usbs, "user" => $user]);
+//        $usbs = Usb::orderBy('status_id');
+//
+//        if(Auth::user()->can('viewSoftDelete'))
+//            $usbs = $usbs->withTrashed();
+
+
+
+        return view('home', ["availableUsbs" => UsbController::getAvailableUsbs(), "user" => $user]);
     }
 }

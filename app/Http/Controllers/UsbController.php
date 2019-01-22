@@ -134,4 +134,72 @@ class UsbController extends Controller
             "type" => $type
         ]);
     }
+
+    /** Returns all availables usbs
+     *  Condition for a usb to be available:
+     *  - The last reservation is already finished
+     *  - The key is into a hub
+     *
+     */
+    public static function getAvailableUsbs()
+    {
+
+    }
+
+//    /** Determine wheter the usb key is reserved or not
+//     * @param Usb $usb
+//     */
+//    public function isReserved(Usb $usb){
+//
+//    }
+
+//    /** Determines wheter the usb key is in the hub or not
+//     *
+//     */
+//    public function isInTheHub(Usb $usb){
+//
+//        return ($this->rack_number == 0) ? false : true;
+//    }
+//
+//    /** Determine wheter the usb key is used right now or not
+//     *
+//     */
+//    public function scopeUsed(){
+//
+//    }
+//
+//    /** Determine wheter the usb key is absent right now or not
+//     *
+//     */
+//    public function scopeAbsent(){
+//        return false;
+//    }
+//
+//    /** Determine wheter the usb key is present right now or not
+//     *
+//     */
+//    public function scopePresent(){
+//
+//    }
+//
+//    /** Determine wheter the usb key is available right now or not
+//     *
+//     */
+//    public function scopeAvailable(){
+//
+//    }
+//
+//    /** Determine wheter the usb key is not initialized right now or not
+//     *
+//     */
+//    public function notInitialized(){
+//
+//    }
+//
+//    /** Determine wheter the usb key is deleted right now or not
+//     *
+//     */
+//    public function alreadyDeleted(){
+//
+//    }
 }
