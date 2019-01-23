@@ -12,7 +12,7 @@ class UsbTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Usb::class, 30)->create();
+        factory(App\Usb::class, 40)->create();
 
         $faker = Faker::create();
 

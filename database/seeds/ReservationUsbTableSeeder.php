@@ -14,23 +14,42 @@ class ReservationUsbTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        $presentOrUsedUsbs = App\Usb::where('status_id', '=', App\Status::active())->pluck("id");
-        $reservations = App\Reservation::all()->pluck("id");
+        $activeUsbs = App\Usb::where('status_id', '=', App\Status::active())->pluck("id");
 
-        foreach ($presentOrUsedUsbs as $usb) {
+        foreach (App\Reservation::all() as $reservation) {
 
-            $randomUsb = $faker->randomElement($presentOrUsedUsbs);
+            $randomUsb = $faker->randomElement($activeUsbs);
 
             DB::table('reservation_usb')->insert([
-                'reservation_id' => $faker->randomElement($reservations),
+                'reservation_id' => $reservation->id,
                 'usb_id' => $randomUsb,
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => $reservation->created_at,
+                'updated_at' => $reservation->updated_at
             ]);
 
-//            if (($key = array_search($randomUsb, $presentOrUsedUsbs->all())) !== false) {
-//                unset($presentOrUsedUsbs[$key]);
-//            }
+            if (($key = array_search($randomUsb, $activeUsbs->all())) !== false) {
+                unset($activeUsbs[$key]);
+            }
         }
+
+        foreach ($faker->randomElements(App\Reservation::all(),4) as $reservation) {
+
+            $randomUsb = $faker->randomElement($activeUsbs);
+
+            if($randomUsb == null)
+                break;
+
+            DB::table('reservation_usb')->insert([
+                'reservation_id' => $reservation->id,
+                'usb_id' => $randomUsb,
+                'created_at' => $reservation->created_at,
+                'updated_at' => $reservation->updated_at
+            ]);
+
+            if (($key = array_search($randomUsb, $activeUsbs->all())) !== false) {
+                unset($activeUsbs[$key]);
+            }
+        }
+
     }
 }

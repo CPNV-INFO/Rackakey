@@ -143,7 +143,10 @@ class UsbController extends Controller
      */
     public static function getAvailableUsbs()
     {
-
+        $usb = Usb::with('reservations')->whereHas('reservations', function($query){
+           $query->whereNotNull('date_returned');
+        })->where('rack_number', '=', 0)->get();
+        dd($usb);
     }
 
 //    /** Determine wheter the usb key is reserved or not
