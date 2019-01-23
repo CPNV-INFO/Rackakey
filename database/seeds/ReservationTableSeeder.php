@@ -33,7 +33,6 @@ class ReservationTableSeeder extends Seeder
             $dateReturned = $faker->randomElement(
                 [
                     null,
-                    null,
                     date('Y-m-d H:i:s', strtotime($faker->randomElement(["+1 day", "+2 days", "+3 days", "+4 days"]),
                         strtotime($dateThisMonth->format('Y-m-d H:i:s'))))
                 ]);

@@ -138,15 +138,16 @@ class UsbController extends Controller
     /** Returns all availables usbs
      *  Condition for a usb to be available:
      *  - The last reservation is already finished
-     *  - The key is into a hub
-     *
+     *  - The key is into a hub (the rack_number is different from 0)
+     *  - Status is active
      */
     public static function getAvailableUsbs()
     {
         $usb = Usb::with('reservations')->whereHas('reservations', function($query){
            $query->whereNotNull('date_returned');
-        })->where('rack_number', '=', 0)->get();
+        })->where('rack_number', '!=', 0)->get();
         dd($usb);
+        return $usb;
     }
 
 //    /** Determine wheter the usb key is reserved or not
