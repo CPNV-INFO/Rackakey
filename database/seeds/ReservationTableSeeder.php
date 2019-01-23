@@ -30,11 +30,14 @@ class ReservationTableSeeder extends Seeder
 
             $dateThisMonth = $faker->dateTimeThisMonth;
 
+            $dateInFuturePlus = date('Y-m-d H:i:s', strtotime($faker->randomElement(["+1 day", "+2 days", "+3 days", "+4 days"]),
+                strtotime($dateThisMonth->format('Y-m-d H:i:s'))));
+
             $dateReturned = $faker->randomElement(
                 [
                     null,
-                    date('Y-m-d H:i:s', strtotime($faker->randomElement(["+1 day", "+2 days", "+3 days", "+4 days"]),
-                        strtotime($dateThisMonth->format('Y-m-d H:i:s'))))
+                    $dateInFuturePlus,
+                    $dateInFuturePlus
                 ]);
 
             if ($dateReturned == null) {
