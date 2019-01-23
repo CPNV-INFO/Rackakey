@@ -146,7 +146,7 @@ class UsbController extends Controller
         $usb = Usb::with('reservations')->whereHas('reservations', function($query){
            $query->whereNotNull('date_returned');
         })->where('rack_number', '!=', 0)->get();
-        dd($usb);
+//        dd($usb);
         return $usb;
     }
 

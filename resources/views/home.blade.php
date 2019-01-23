@@ -34,7 +34,7 @@
         <tbody>
         <!-- All table lines -->
 
-        @foreach ($availableUsbs as $usb)
+        @foreach ($usbs as $actualUsb)
 
             <tr data-usbname="{{ $actualUsb->name }}"
                 data-reservationusbcount="{{ $actualUsb->reservations()->count() }}"

@@ -37,8 +37,6 @@ class HomeController extends Controller
 //        if(Auth::user()->can('viewSoftDelete'))
 //            $usbs = $usbs->withTrashed();
 
-
-
         return view('home', ["availableUsbs" => UsbController::getAvailableUsbs(), "user" => $user]);
     }
 }

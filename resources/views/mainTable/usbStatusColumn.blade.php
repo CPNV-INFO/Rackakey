@@ -1,5 +1,5 @@
 <td class="
-{{ ($actualUsb->notInitialized()) ? "not-initialized" : ""}}
+{{ ($actualUsb->notActive()) ? "not-initialized" : ""}}
 {{ ($actualUsb->absent()) ? "absent" : ""}}
 {{ ($actualUsb->alreadyDeleted()) ? "deleted" : ""}}
         ">{{ $actualUsb->status->name }}</td>
