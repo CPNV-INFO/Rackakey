@@ -135,18 +135,25 @@ class UsbController extends Controller
         ]);
     }
 
-    /** Returns all availables usbs
-     *  Condition for a usb to be available:
-     *  - The last reservation is already finished
-     *  - The key is into a hub (the rack_number is different from 0)
-     *  - Status is active
-     */
+    /** Returns available usbs
+     *
+     **/
     public static function getAvailableUsbs()
     {
-        $usb = Usb::with('reservations')->whereHas('reservations', function($query){
-           $query->whereNotNull('date_returned');
-        })->where('rack_number', '!=', 0)->get();
-//        dd($usb);
+        return Usb::openedReservation();
+    }
+
+    /** Returns all absent key
+     *  Condition for a usb to be absent:
+     *  - The key is not reserved at all OR the last reservation is not finished
+     *  - The key is not into a hub (the rack_number is equal to 0)
+     */
+    public static function getAbsentUsbs()
+    {
+        $usb = Usb::hasNot('reservations')->whereHas('reservations', function($query){
+
+        })->where('rack_number', '=', 0)->get();
+
         return $usb;
     }
 

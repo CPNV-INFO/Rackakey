@@ -40,6 +40,9 @@ class ReservationTableSeeder extends Seeder
                     $dateInFuturePlus
                 ]);
 
+
+            $finished = false;
+
             if ($dateReturned == null) {
                 $dateThisMonth = date("Y-m-d H:i:s", strtotime(
                     $faker->randomElement(
@@ -49,6 +52,8 @@ class ReservationTableSeeder extends Seeder
                             "-14 days", "-16 days", "-30 days", "-60 days"
                         ]),
                     strtotime($faker->dateTimeThisMonth->format("Y-m-d H:i:s"))));
+            } else{
+                $finished = true;
             }
 
             DB::table('reservations')->insert([
@@ -62,6 +67,7 @@ class ReservationTableSeeder extends Seeder
                 'date_returned' => $dateReturned,
                 'user_id' => $randomProfessor,
                 'file_id' => $randomFile,
+                'finished' => $finished,
                 'created_at' => $dateThisMonth,
                 'updated_at' => $dateThisMonth
             ]);

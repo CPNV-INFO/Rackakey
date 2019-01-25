@@ -21,4 +21,12 @@ class Reservation extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
+
+//    public function scopeFinished($query){
+//        return $query->where('finished', '=', true);
+//    }
+//
+//    public function scopeNotFinished($query){
+//        return $query->where('finished', '=', false);
+//    }
 }
