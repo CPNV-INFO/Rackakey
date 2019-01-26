@@ -29,23 +29,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-//        $user = Auth::user()->firstName . '.' . strtoupper(Auth::user()->lastName);
+        $user = Auth::user()->firstName . '.' . strtoupper(Auth::user()->lastName);
 
 //        $usbs = Usb::orderBy('status_id');
 //
-//        if(Auth::user()->can('viewSoftDelete'))
+//
 //            $usbs = $usbs->withTrashed();
 
-        $usbs = UsbController::getAvailableUsbs()->get();
+        $usbsWithTypes["available"]     =  UsbController::getAvailableUsbs();
+        $usbsWithTypes["present"]       =  UsbController::getPresentUsbs();
+//        $usbsWithTypes["used"]          =  UsbController::getUsedUsbs()->get();
+//        $usbsWithTypes["absent"]        =  UsbController::getAbsentUsbs()->get();
+//        $usbsWithTypes["not-initialized"]    =  UsbController::getNotActiveUsbs()->get();
 
-//        $usbs = UsbController::getAbsentUsbs();
-        dd($usbs);
+        if(Auth::user()->can('viewSoftDelete'))
+            $usbsWithTypes["deleted"] = UsbController::getDeletedUsbs()->get();
 
-//        $usbs[] = UsbController::get
-
-        $usbs["type"] = "available";
-
-
-        return view('home', ["usbs" => $usbs, "user" => $user]);
+        return view('home', ["usbsWithTypes" => $usbsWithTypes, "user" => $user]);
     }
 }

@@ -1,9 +1,11 @@
 <td class=" ">
-    @if ($actualUsb->reservation()->exists())
-        {{ $actualUsb->reservation()->first()->user->firstName }}
+    @switch($key)
+        @case('present')
+        @case('used')
+        {{ $actualUsb->reservation()->latest()->first()->user->firstName }}
         .
-        {{ strtoupper($actualUsb->reservation()->first()->user->lastName) }}
+        {{ strtoupper($actualUsb->reservation()->latest()->first()->user->lastName) }}
         -
-        {{ $actualUsb->reservation()->first()->name }}
-    @endif
+        {{ $actualUsb->reservation()->latest()->first()->name }}
+    @endswitch
 </td>

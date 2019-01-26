@@ -1,49 +1,75 @@
-@if($actualUsb->absent())
+@switch($key)
 
-    <td class=" ">
-    </td>
-
-    <td class="">
-        @include('usbActionButtons.delete')
-    </td>
-
-    <td class=" ">
-    </td>
-
-@elseif($actualUsb->available() ||
-        $actualUsb->notInitialized() ||
-        $actualUsb->present())
-
-    <td class=" ">
-        @if($actualUsb->present())
+    @case('available')
+        <td>
             @include('usbActionButtons.delete')
-        @endif
-    </td>
-
-    @if($actualUsb->notInitialized())
-        <td class=" ">
-            @include('usbActionButtons.initialize')
         </td>
-    @else
-        <td class=" ">
+
+        <td>
             @include('usbActionButtons.download')
         </td>
-    @endif
 
-    <td class=" ">
-        @include('usbActionButtons.explore')
-    </td>
+        <td>
+            @include('usbActionButtons.explore')
+        </td>
+    @break
 
-@elseif($actualUsb->alreadyDeleted())
+    @case('present')
+        <td>
+            {{--@include('usbActionButtons.delete')--}}
+        </td>
 
-    <td class=" ">
-    </td>
+        <td>
+            @include('usbActionButtons.download')
+        </td>
 
-    <td class="">
-        @include('usbActionButtons.restore')
-    </td>
+        <td>
+            @include('usbActionButtons.explore')
+        </td>
+    @break
 
-    <td class=" ">
-    </td>
+    @case('used')
+        <td>
+            {{--@include('usbActionButtons.delete')--}}
+        </td>
 
-@endif
+        <td>
+            {{--@include('usbActionButtons.download')--}}
+        </td>
+
+        <td>
+            {{--@include('usbActionButtons.explore')--}}
+        </td>
+    @break
+
+    @case('absent')
+        <td></td>
+
+        <td>
+            @include('usbActionButtons.delete')
+        </td>
+
+        <td></td>
+    @break
+
+    @case('not-active')
+        <td></td>
+
+        <td>
+            @include('usbActionButtons.activate')
+        </td>
+
+        <td></td>
+    @break
+
+    @case('deleted')
+        <td></td>
+
+        <td>
+            @include('usbActionButtons.restore')
+        </td>
+
+        <td></td>
+    @break
+
+@endswitch

@@ -17,8 +17,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/util.scss', 'public/css')
     .sass('resources/sass/bootstrap/bootstrap.scss', 'public/css/bootstrap')
     .js('resources/js/bootstrap/bootstrap.js', 'public/js/bootstrap')
-    .js('resources/js/rackakey.js', 'public/js')
-;
+    .js('resources/js/rackakey.js', 'public/js');
 
 
 

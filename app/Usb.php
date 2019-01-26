@@ -11,15 +11,13 @@ class Usb extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function status(){
+    public function status()
+    {
         return $this->belongsTo('App\Status');
     }
 
-    public function reservation(){
-        return $this->belongsToMany('App\Reservation');
-    }
-
-    public function reservations(){
+    public function reservation()
+    {
         return $this->belongsToMany('App\Reservation');
     }
 
@@ -30,7 +28,7 @@ class Usb extends Model
     static public function formatFileSize($size)
     {
         $actualSize = $size;
-        $units = array( 'B', 'KB', 'MB', 'GB', 'TB');
+        $units = array('B', 'KB', 'MB', 'GB', 'TB');
         $power = $actualSize > 0 ? floor(log($actualSize, 1024)) : 0;
         return number_format($actualSize / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
     }
@@ -40,35 +38,73 @@ class Usb extends Model
      * @param $query
      * @return mixed
      */
-    public function scopeInRack($query){
+    public function scopeInRack($query)
+    {
         return $query->where('rack_number', '!=', 0);
     }
 
-    /** Returns usb that are NOT the rack
+    /** Returns usb that are NOT in the rack
      *
      * @param $query
      * @return mixed
      */
-    public function scopeNotInRack($query){
+    public function scopeNotInRack($query)
+    {
         return $query->where('rack_number', '=', 0);
     }
 
-    /** Returns usb that are in a reservation
+    /** Returns usb that are already reserved
      *
      * @param $query
      * @return mixed
      */
-    public function scopeOpenedReservation($query){
-        return $this->with('reservation')->notFinished();
+    public function scopeReserved($query)
+    {
+        return $this->whereHas('reservation', function ($query) {
+            $query->notFinished();
+        });
     }
 
-    /** Returns usb that are in a reservation
+    /** Returns usb that are not actually reserved
      *
      * @param $query
      * @return mixed
      */
-    public function scopeClosedReservation($query){
-        return $this->with('reservation')->finished();
+    public function scopeNotReserved($query)
+    {
+        $query->whereHas('reservation', function ($query) {
+            $query->finished();
+        });
+
     }
 
+    /** Returns usb that doesn't have any reservation
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeInNoneReservation($query)
+    {
+        return $query->doesntHave('reservation');
+    }
+
+    /** Returns usb that aren't active
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeNotActiveUsb($query)
+    {
+        return $query->where('status_id', '=', Status::notActive());
+    }
+
+    /** Returns usb that are active
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeActiveUsb($query)
+    {
+        return $query->where('status_id', '=', Status::active());
+    }
 }

@@ -85,7 +85,7 @@ class UsbController extends Controller
     public function destroy(Request $request, Usb $usb)
     {
         $usb->delete();
-        $usb->status_id = Status::alreadyDeleted();
+        $usb->status_id = Status::notActive();
         $usb->save();
 
         $this->createFlashMessage($request, $usb, "supprimée", "info");
@@ -104,7 +104,7 @@ class UsbController extends Controller
     {
         $usb = Usb::withTrashed()->find($id);
         $usb->restore();
-        $usb->status_id = Status::notInitialized();
+        $usb->status_id = Status::notActive();
         $usb->save();
 
         $this->createFlashMessage($request, $usb, "restaurée", "success");
@@ -115,7 +115,7 @@ class UsbController extends Controller
     public function initialize(Request $request, $id)
     {
         $usb = Usb::find($id);
-        $usb->status_id = Status::available();
+        $usb->status_id = Status::active();
         $usb->save();
 
         $this->createFlashMessage($request, $usb, "initialisée", "success");
@@ -135,82 +135,90 @@ class UsbController extends Controller
         ]);
     }
 
-    /** Returns available usbs
-     *
-     **/
+    /** Returns all available usb keys
+     *  INFO: Available are the usbs that:
+     *          - Are active AND
+     *          - Are in the rack AND
+     *          - Are not reserved OR
+     *          - That doesn't have any reservation at all
+     */
     public static function getAvailableUsbs()
     {
-        return Usb::openedReservation();
+        // INFO: notReserved() returns nothing if there is no relation between Usb and Reservation.
+        //       so we do another request to get the same type of usb but without relation at all (reservation)
+        $availableUsbWithOneOrMoreReservation       = Usb::activeUsb()->notReserved()->inRack()->get();
+        $availableUsbNoneReservation                = Usb::activeUsb()->inNoneReservation()->inRack()->get();
+
+//        dd($availableUsbWithOneOrMoreReservation->last()->reservation());
+
+        $result = $availableUsbWithOneOrMoreReservation->merge($availableUsbNoneReservation);
+
+        return $result;
     }
 
-    /** Returns all absent key
-     *  Condition for a usb to be absent:
-     *  - The key is not reserved at all OR the last reservation is not finished
-     *  - The key is not into a hub (the rack_number is equal to 0)
+    /** Returns all present usb keys
+     *  INFO: Present are the usbs that:
+     *          - Are active AND
+     *          - Are in the rack AND
+     *          - Are reserved
+     *
+     *      Idea: Maybe some person could forget that they have reserved a usb (for any reason/error),
+     *            should it have a notification that tells for example when
+     *            a usb has been present for too much time ?
+     */
+    public static function getPresentUsbs()
+    {
+        return Usb::activeUsb()->reserved()->inRack()->get();
+    }
+
+    /** Returns all absent usb keys
+     *  INFO: Absent are the usbs that:
+     *          - Are active AND
+     *          - Are not in the rack AND
+     *          - Are not reserved
+     *          - That doesn't have any reservation at all
      */
     public static function getAbsentUsbs()
     {
-        $usb = Usb::hasNot('reservations')->whereHas('reservations', function($query){
-
-        })->where('rack_number', '=', 0)->get();
-
-        return $usb;
+        $absent = Usb::not§Reserved()->activeUsb()->notInRack();
+        return $absent;
     }
 
-//    /** Determine wheter the usb key is reserved or not
-//     * @param Usb $usb
-//     */
-//    public function isReserved(Usb $usb){
-//
-//    }
+    /** Returns all used usb keys
+     *  INFO: Used are the usbs that:
+     *          - Are active AND
+     *          - Are not in the rack AND
+     *          - Are reserved
+     */
+    public static function getUsedUsbs()
+    {
+        return Usb::activeUsb()->reserved()->notInRack();
+    }
 
-//    /** Determines wheter the usb key is in the hub or not
-//     *
-//     */
-//    public function isInTheHub(Usb $usb){
-//
-//        return ($this->rack_number == 0) ? false : true;
-//    }
-//
-//    /** Determine wheter the usb key is used right now or not
-//     *
-//     */
-//    public function scopeUsed(){
-//
-//    }
-//
-//    /** Determine wheter the usb key is absent right now or not
-//     *
-//     */
-//    public function scopeAbsent(){
-//        return false;
-//    }
-//
-//    /** Determine wheter the usb key is present right now or not
-//     *
-//     */
-//    public function scopePresent(){
-//
-//    }
-//
-//    /** Determine wheter the usb key is available right now or not
-//     *
-//     */
-//    public function scopeAvailable(){
-//
-//    }
-//
-//    /** Determine wheter the usb key is not initialized right now or not
-//     *
-//     */
-//    public function notInitialized(){
-//
-//    }
-//
-//    /** Determine wheter the usb key is deleted right now or not
-//     *
-//     */
-//    public function alreadyDeleted(){
-//
-//    }
+    /** Returns all not initialized usb keys
+     *  INFO: Not initialized are the usbs that:
+     *          - Are not active AND
+     *          - Are in the rack AND
+     *          - Are not reserved
+     */
+    public static function getNotInitializedUsbs()
+    {
+        return Usb::notReserved()-> notActiveUsb();
+    }
+
+    /** Returns all deleted usb keys
+     *
+     */
+    public static function getActiveUsbs()
+    {
+        return Usb::activeUsb();
+    }
+
+    /** Returns all deleted usb keys
+     *
+     */
+    public static function getDeletedUsbs()
+    {
+        return Usb::onlyTrashed();
+    }
 }

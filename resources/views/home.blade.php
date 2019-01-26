@@ -34,25 +34,28 @@
         <tbody>
         <!-- All table lines -->
 
-        @foreach ($usbs as $actualUsb)
+        @foreach ($usbsWithTypes as $key => $usbs)
+            @foreach($usbs as $actualUsb)
 
-            <tr data-usbname="{{ $actualUsb->name }}"
-                data-reservationusbcount="{{ $actualUsb->reservations()->count() }}"
-                data-usbfreespace="{{  \App\Usb::formatFileSize( $actualUsb->freeSpaceInBytes) }}"
-                data-createdat="{{ $actualUsb->created_at }}">
+                <tr data-usbname="{{ $actualUsb->name }}"
+                    data-reservationusbcount="{{ $actualUsb->reservation()->count() }}"
+                    data-usbfreespace="{{  \App\Usb::formatFileSize( $actualUsb->freeSpaceInBytes) }}"
+                    data-createdat="{{ $actualUsb->created_at }}">
 
-                {{--@include('mainTable.usbIdColumn')--}}
-                @include('mainTable.usbStatusColumn')
-                @include('mainTable.usbRackPortNumberColumn')
-                @include('mainTable.usbNameColumn')
-                {{--@if (Auth::user()->can('viewReservedFrom'))--}}
-                @include('mainTable.usbReservationColumn')
-                {{--@endif--}}
-                @include('mainTable.usbFreeSpaceColumn')
-                {{--@if (Auth::user()->can('viewActionColumn'))--}}
-                @include('mainTable.usbActionsColumn')
-                {{--@endif--}}
-            </tr>
+                    @include('mainTable.usbIdColumn')
+                    @include('mainTable.usbStatusColumn')
+                    @include('mainTable.usbRackPortNumberColumn')
+                    @include('mainTable.usbNameColumn')
+                    {{--@if (Auth::user()->can('viewReservedFrom'))--}}
+                    @include('mainTable.usbReservationColumn')
+                    {{--@endif--}}
+                    @include('mainTable.usbFreeSpaceColumn')
+                    {{--@if (Auth::user()->can('viewActionColumn'))--}}
+                    @include('mainTable.usbActionsColumn')
+                    {{--@endif--}}
+                    @include('mainTable.usbInputOutputTests')
+                </tr>
+            @endforeach
 
         @endforeach
         </tbody>

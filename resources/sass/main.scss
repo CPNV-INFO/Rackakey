@@ -10,6 +10,7 @@ $lightGrey: #ecf0f1;
 $red: #c0392b;
 $lightRed: #e74c3c;
 $blue: #34495e;
+$green: #95a5a6;
 
 * {
   margin: 0px;
@@ -116,6 +117,11 @@ table {
 
 .deleted{
   background-color: $black;
+  @extend %force-white-color;
+}
+
+.present{
+  background-color: $grey;
   @extend %force-white-color;
 }
 
