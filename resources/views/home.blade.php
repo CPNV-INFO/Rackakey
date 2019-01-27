@@ -38,7 +38,7 @@
             @foreach($usbs as $actualUsb)
 
                 <tr data-usbname="{{ $actualUsb->name }}"
-                    data-reservationusbcount="{{ $actualUsb->reservation()->count() }}"
+{{--                    data-reservationusbcount="{{ $actualUsb->reservation()->count() }}"--}}
                     data-usbfreespace="{{  \App\Usb::formatFileSize( $actualUsb->freeSpaceInBytes) }}"
                     data-createdat="{{ $actualUsb->created_at }}">
 

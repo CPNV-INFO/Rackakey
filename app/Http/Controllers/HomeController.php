@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         $usbsWithTypes["available"]     =  UsbController::getAvailableUsbs();
         $usbsWithTypes["present"]       =  UsbController::getPresentUsbs();
-//        $usbsWithTypes["used"]          =  UsbController::getUsedUsbs()->get();
+        $usbsWithTypes["used"]          =  UsbController::getUsedUsbs()->get();
 //        $usbsWithTypes["absent"]        =  UsbController::getAbsentUsbs()->get();
 //        $usbsWithTypes["not-initialized"]    =  UsbController::getNotActiveUsbs()->get();
 

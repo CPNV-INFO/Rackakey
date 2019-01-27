@@ -60,8 +60,8 @@ class Usb extends Model
      */
     public function scopeReserved($query)
     {
-        return $this->whereHas('reservation', function ($query) {
-            $query->notFinished();
+        return $query->whereHas('reservation', function ($subQuery) {
+            $subQuery->notFinished();
         });
     }
 
@@ -72,9 +72,21 @@ class Usb extends Model
      */
     public function scopeNotReserved($query)
     {
-        $query->whereHas('reservation', function ($query) {
+        return $query->whereHas('reservation', function ($query) {
             $query->finished();
         });
+    }
+
+    /** Returns the last reservation for this usb
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeLastReservation($query)
+    {
+        return $query->with(['reservation' => function ($subQuery) {
+            $subQuery->lastReservation();
+        }]);
 
     }
 

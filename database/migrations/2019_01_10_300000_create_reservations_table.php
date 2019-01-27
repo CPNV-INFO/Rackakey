@@ -23,6 +23,7 @@ class CreateReservationsTable extends Migration
             $table->integer('file_id')->unsigned()->nullable();
             $table->boolean('finished')->default(false);
             $table->foreign('file_id')->references('id')->on('files');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

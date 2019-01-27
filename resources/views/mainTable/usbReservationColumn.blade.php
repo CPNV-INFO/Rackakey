@@ -2,10 +2,10 @@
     @switch($key)
         @case('present')
         @case('used')
-        {{ $actualUsb->reservation()->latest()->first()->user->firstName }}
+        {{ $actualUsb->reservation->first()->user->firstName }}
         .
-        {{ strtoupper($actualUsb->reservation()->latest()->first()->user->lastName) }}
+        {{ strtoupper($actualUsb->reservation->first()->user->lastName) }}
         -
-        {{ $actualUsb->reservation()->latest()->first()->name }}
+        {{ $actualUsb->reservation->first()->name }}
     @endswitch
 </td>
