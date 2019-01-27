@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e40880c8-14bd-4e3f-b817-ac5d6d807f80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reservation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Usb.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Usb.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_01_10_300000_create_reservations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_01_10_300000_create_reservations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/mainTable/usbReservationColumn.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainTable/usbReservationColumn.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -138,20 +134,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="193" column="64" selection-start-line="193" selection-start-column="64" selection-end-line="193" selection-end-column="64" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="545">
-              <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+            <state relative-caret-position="646">
+              <caret line="210" column="56" selection-start-line="210" selection-start-column="56" selection-end-line="210" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -166,10 +153,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://4f2876f4-cd13-4dec-9c0a-6058df30cf8d/schema/rackakey/table/reservation_usb">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state>
-              <filtering enabled="true" />
+        <entry file="file://$PROJECT_DIR$/app/Usb.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="74" column="44" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="40" column="59" lean-forward="true" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
             </state>
           </provider>
         </entry>
@@ -185,7 +181,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>::active(</find>
       <find>::active()</find>
       <find>::acti</find>
       <find>::active</find>
@@ -215,6 +210,7 @@
       <find>Softdelete</find>
       <find>lastReservation</find>
       <find>inNone</find>
+      <find>notreserved</find>
     </findStrings>
     <replaceStrings>
       <replace>numberBetween</replace>
@@ -282,9 +278,9 @@
         <option value="$PROJECT_DIR$/resources/views/mainTable/usbReservationColumn.blade.php" />
         <option value="4f2876f4-cd13-4dec-9c0a-6058df30cf8d/schema/rackakey/table/reservation_usb.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/4f2876f4-cd13-4dec-9c0a-6058df30cf8d/console.sql" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
       </list>
     </option>
   </component>
@@ -555,12 +551,12 @@
       <workItem from="1548313187903" duration="1527000" />
       <workItem from="1548418945304" duration="11116000" />
       <workItem from="1548478478227" duration="34962000" />
-      <workItem from="1548575431127" duration="25532000" />
+      <workItem from="1548575431127" duration="26226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="169194000" />
+    <option name="totallyTimeSpent" value="169888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -905,13 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Usb.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="99" column="46" selection-start-line="99" selection-start-column="46" selection-end-line="99" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://4f2876f4-cd13-4dec-9c0a-6058df30cf8d/schema/rackakey/table/usbs">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -933,17 +922,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
+    <entry file="file://$PROJECT_DIR$/app/Usb.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="193" column="64" selection-start-line="193" selection-start-column="64" selection-end-line="193" selection-end-column="64" />
+        <state relative-caret-position="355">
+          <caret line="74" column="44" selection-start-line="74" selection-start-column="33" selection-end-line="74" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="41" column="28" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
+        <state relative-caret-position="522">
+          <caret line="40" column="59" lean-forward="true" selection-start-line="40" selection-start-column="59" selection-end-line="40" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="210" column="56" selection-start-line="210" selection-start-column="56" selection-end-line="210" selection-end-column="56" />
         </state>
       </provider>
     </entry>

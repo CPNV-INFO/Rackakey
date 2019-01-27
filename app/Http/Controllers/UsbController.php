@@ -179,8 +179,14 @@ class UsbController extends Controller
     public static function getAbsentUsbs()
     {
         // Todo: add that it needs to get the ones that doesn't have any reservation at all
-//        $absent = Usb::activeUsb()->notReserved()->lastReservation()->notInRack();
-//        return $absent;
+//        $absent = Usb::activeUsb()->notReserved()->notInRack()->get();
+
+        $absentUsbWithOneOrMoreRelation     = Usb::activeUsb()->notReserved()->notInRack()->get();
+        $absentUsbWithoutRelation           = Usb::activeUsb()->inNoneReservation()->notInRack()->get();
+
+        $absent = $absentUsbWithOneOrMoreRelation->merge($absentUsbWithoutRelation);
+
+        return $absent;
     }
 
     /** Returns all used usb keys
@@ -191,7 +197,7 @@ class UsbController extends Controller
      */
     public static function getUsedUsbs()
     {
-        return Usb::activeUsb()->reserved()->lastReservation()->notInRack();
+        return Usb::activeUsb()->reserved()->lastReservation()->notInRack()->get();
     }
 
     /** Returns all not initialized usb keys
@@ -202,7 +208,7 @@ class UsbController extends Controller
      */
     public static function getNotInitializedUsbs()
     {
-        return Usb::notReserved()->notActiveUsb();
+        return Usb::notReserved()->notActiveUsb()->get();
     }
 
     /** Returns all deleted usb keys
