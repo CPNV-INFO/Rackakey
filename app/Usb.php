@@ -87,7 +87,40 @@ class Usb extends Model
         return $query->with(['reservation' => function ($subQuery) {
             $subQuery->lastReservation();
         }]);
+    }
 
+    /** Returns the reservations ordered by date
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeOrderByReservationDate($query)
+    {
+        return $query->with(['reservation' => function ($subQuery) {
+            $subQuery->orderByReservationDate();
+        }]);
+    }
+
+    /** Returns the ones that have reservation
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeHasReservation($query)
+    {
+        return $query->has('reservation');
+    }
+
+
+
+    /** Returns the last reservation for this usb
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeWithReservation($query)
+    {
+        return $query->with('reservation');
     }
 
     /** Returns usb that doesn't have any reservation

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Status;
 use App\Usb;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Session;
 
@@ -140,15 +141,23 @@ class UsbController extends Controller
      *  INFO: Available are the usbs that:
      *          - Are active AND
      *          - Are in the rack AND
-     *          - Are not reserved OR
+     *          - Are actually not reserved OR
      *          - That doesn't have any reservation at all
      */
     public static function getAvailableUsbs()
     {
-        $availableUsbWithOneOrMoreReservation = Usb::activeUsb()->inRack()->notReserved()->lastReservation()->get();
-        $availableUsbNoneReservation          = Usb::activeUsb()->inNoneReservation()->inRack()->get();
+        $availableCollection = collect();
 
-        $available = $availableUsbWithOneOrMoreReservation->merge($availableUsbNoneReservation);
+        $activeAndInRackReserved = Usb::activeUsb()->inRack()->hasReservation()->orderByReservationDate()->get();
+
+        // Let's check for every usb if their last reservation is NOT actually reserved (finished = true)
+        foreach ($activeAndInRackReserved as $usb){
+            if($usb->reservation->first()->finished)
+                $availableCollection->prepend($usb);
+        }
+
+        $availableUsbNoneReservation = Usb::activeUsb()->inRack()->inNoneReservation()->get();
+        $available = $availableCollection->merge($availableUsbNoneReservation);
 
         return $available;
     }
@@ -158,7 +167,7 @@ class UsbController extends Controller
      *  INFO: Present are the usbs that:
      *          - Are active AND
      *          - Are in the rack AND
-     *          - Are reserved
+     *          - Are actually reserved
      *
      *      Idea: Maybe some person could forget that they have reserved a usb (for any reason/error),
      *            should it have a notification that tells for example when
@@ -166,7 +175,18 @@ class UsbController extends Controller
      */
     public static function getPresentUsbs()
     {
-        return Usb::activeUsb()->reserved()->lastReservation()->inRack()->get();
+        $presentCollection = collect();
+
+        $activeAndInRack = Usb::activeUsb()->inRack()->hasReservation()->orderByReservationDate()->get();
+
+        // Let's check for every usb if their last reservation is actually reserved (finished = false)
+        foreach ($activeAndInRack as $usb){
+
+            if(!$usb->reservation->first()->finished)
+                $presentCollection->prepend($usb);
+        }
+
+        return $presentCollection;
     }
 
     /** Returns all absent usb keys
@@ -193,18 +213,33 @@ class UsbController extends Controller
      *  INFO: Used are the usbs that:
      *          - Are active AND
      *          - Are not in the rack AND
-     *          - Are reserved
+     *          - Are actually reserved
      */
     public static function getUsedUsbs()
     {
-        return Usb::activeUsb()->reserved()->lastReservation()->notInRack()->get();
+//        return Usb::activeUsb()->reserved()->lastReservation()->notInRack()->get();
+
+        $usedCollection = collect();
+
+        $activeAndNotInRack = Usb::activeUsb()->notInRack()->hasReservation()->orderByReservationDate()->get();
+
+        // Let's check for every usb if their last reservation is actually reserved (finished = false)
+        foreach ($activeAndNotInRack as $usb){
+
+            if(!$usb->reservation->first()->finished)
+                $usedCollection->prepend($usb);
+        }
+
+        return $presentCollection;
+
+
     }
 
     /** Returns all not initialized usb keys
      *  INFO: Not initialized are the usbs that:
      *          - Are not active AND
      *          - Are in the rack AND
-     *          - Are not reserved
+     *          - Are actually not reserved
      */
     public static function getNotInitializedUsbs()
     {

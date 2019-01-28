@@ -42,8 +42,8 @@ class HomeController extends Controller
         $usbsWithTypes["absent"]        =  UsbController::getAbsentUsbs();
 //        $usbsWithTypes["not-initialized"]    =  UsbController::getNotInitializedUsbs();
 
-        if(Auth::user()->can('viewSoftDelete'))
-            $usbsWithTypes["deleted"] = UsbController::getDeletedUsbs()->get();
+//        if(Auth::user()->can('viewSoftDelete'))
+//            $usbsWithTypes["deleted"] = UsbController::getDeletedUsbs()->get();
 
         return view('home', ["usbsWithTypes" => $usbsWithTypes, "user" => $user]);
     }

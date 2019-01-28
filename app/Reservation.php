@@ -43,6 +43,16 @@ class Reservation extends Model
      */
     public function scopeLastReservation($query)
     {
-        return $query->orderBy('date_reserved', 'desc')->limit(1);
+        return $query->orderBy('date_reserved', 'desc');
+    }
+
+    /** Returns usb last reservation
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeOrderByReservationDate($query)
+    {
+        return $query->orderBy('date_reserved', 'desc');
     }
 }
