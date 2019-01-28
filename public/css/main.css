@@ -61,7 +61,8 @@ h6 {
 .present,
 .deleted,
 .used,
-.absent {
+.absent,
+.pulled-not-initialized {
   color: white !important;
 }
 
@@ -97,6 +98,10 @@ table tbody td {
 
 .not-initialized {
   background-color: #ecf0f1;
+}
+
+.pulled-not-initialized {
+  background-color: #e74c3c;
 }
 
 .absent {

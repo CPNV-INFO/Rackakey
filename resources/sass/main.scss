@@ -105,6 +105,11 @@ table {
   //@extend %force-white-color;
 }
 
+.pulled-not-initialized{
+  background-color: $lightRed;
+  @extend %force-white-color;
+}
+
 .absent {
   background-color: $lightRed;
   @extend %force-white-color;

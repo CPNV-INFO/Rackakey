@@ -31,19 +31,15 @@ class HomeController extends Controller
     {
         $user = Auth::user()->firstName . '.' . strtoupper(Auth::user()->lastName);
 
-//        $usbs = Usb::orderBy('status_id');
-//
-//
-//            $usbs = $usbs->withTrashed();
-
         $usbsWithTypes["available"]     =  UsbController::getAvailableUsbs();
         $usbsWithTypes["present"]       =  UsbController::getPresentUsbs();
         $usbsWithTypes["used"]          =  UsbController::getUsedUsbs();
         $usbsWithTypes["absent"]        =  UsbController::getAbsentUsbs();
-//        $usbsWithTypes["not-initialized"]    =  UsbController::getNotInitializedUsbs();
+        $usbsWithTypes["not-initialized"]           =  UsbController::getNotInitializedUsbs();
+        $usbsWithTypes["pulled-not-initialized"]    =  UsbController::getPulledAndNotInizialedUsbs();
 
-//        if(Auth::user()->can('viewSoftDelete'))
-//            $usbsWithTypes["deleted"] = UsbController::getDeletedUsbs()->get();
+        if(Auth::user()->can('viewSoftDelete'))
+            $usbsWithTypes["deleted"] = UsbController::getDeletedUsbs()->get();
 
         return view('home', ["usbsWithTypes" => $usbsWithTypes, "user" => $user]);
     }

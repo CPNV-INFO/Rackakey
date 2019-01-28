@@ -20,6 +20,10 @@
             {{ "Non initialisée" }}
         @break
 
+        @case('pulled-not-initialized')
+            {{ "Retirée sans initialisation" }}
+        @break
+
         @case('deleted')
             {{ "Supprimée" }}
         @break

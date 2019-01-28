@@ -29,21 +29,11 @@ class Reservation extends Model
     }
 
     public function scopeFinished($query){
-        return $query->where('finished', '=', true);
+        return $query->withUser()->where('finished', '=', true);
     }
 
     public function scopeNotFinished($query){
-        return $query->where('finished', '=', false);
-    }
-
-    /** Returns usb last reservation
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeLastReservation($query)
-    {
-        return $query->orderBy('date_reserved', 'desc');
+        return $query->withUser()->where('finished', '=', false);
     }
 
     /** Returns usb last reservation
@@ -53,6 +43,16 @@ class Reservation extends Model
      */
     public function scopeOrderByReservationDate($query)
     {
-        return $query->orderBy('date_reserved', 'desc');
+        return $query->withUser()->orderBy('date_reserved', 'desc');
+    }
+
+    /** Returns the users with the requests
+     *
+     * @param $query
+     * @return mixed
+     */
+    public function scopeWithUser($query)
+    {
+        return $query->with('user');
     }
 }

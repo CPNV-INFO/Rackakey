@@ -30,7 +30,9 @@ class Usb extends Model
         $actualSize = $size;
         $units = array('B', 'KB', 'MB', 'GB', 'TB');
         $power = $actualSize > 0 ? floor(log($actualSize, 1024)) : 0;
-        return number_format($actualSize / pow(1024, $power), 2, '.', ',') . ' ' . $units[$power];
+        return number_format(
+            $actualSize / pow(1024, $power),
+            2, '.', ',') . ' ' . $units[$power];
     }
 
     /** Returns usb that are IN the rack
@@ -51,42 +53,6 @@ class Usb extends Model
     public function scopeNotInRack($query)
     {
         return $query->where('rack_number', '=', 0);
-    }
-
-    /** Returns usb that are already reserved
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeReserved($query)
-    {
-        return $query->whereHas('reservation', function ($subQuery) {
-            $subQuery->notFinished();
-        });
-    }
-
-    /** Returns usb that are not actually reserved
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeNotReserved($query)
-    {
-        return $query->whereHas('reservation', function ($query) {
-            $query->finished();
-        });
-    }
-
-    /** Returns the last reservation for this usb
-     *
-     * @param $query
-     * @return mixed
-     */
-    public function scopeLastReservation($query)
-    {
-        return $query->with(['reservation' => function ($subQuery) {
-            $subQuery->lastReservation();
-        }]);
     }
 
     /** Returns the reservations ordered by date
@@ -110,8 +76,6 @@ class Usb extends Model
     {
         return $query->has('reservation');
     }
-
-
 
     /** Returns the last reservation for this usb
      *

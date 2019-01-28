@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Policies\UsbPolicy;
-use App\Policies\UserPolicy;
 use App\Role;
 use App\Usb;
 use App\User;
@@ -20,7 +19,6 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         Usb::class => UsbPolicy::class,
-        User::class => UserPolicy::class,
     ];
 
     /**
@@ -39,8 +37,11 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::resource('usbs', 'App\Policies\UsbPolicy');
-//        Gate::define('viewReservedFrom','App\Policies\UserPolicy@viewReservedFrom');
-//        Gate::define('viewActionColumn',   'App\Policies\UserPolicy@viewActionColumn');
-        Gate::define('viewSoftDelete',   'App\Policies\UserPolicy@viewSoftDelete');
+
+        Gate::define('viewSoftDelete',              'App\Policies\UsbPolicy@viewSoftDelete');
+        Gate::define('viewDeleteUsbButton',         'App\Policies\UsbPolicy@viewDeleteUsbButton');
+        Gate::define('viewDownloadUsbDataButton',   'App\Policies\UsbPolicy@viewDownloadUsbDataButton');
+        Gate::define('viewExploreUsbButton',        'App\Policies\UsbPolicy@viewExploreUsbButton');
+        Gate::define('viewInitializeUsbButton',     'App\Policies\UsbPolicy@viewInitializeUsbButton');
     }
 }

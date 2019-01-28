@@ -43,33 +43,59 @@
     @break
 
     @case('absent')
-        <td></td>
+        <td>
+
+        </td>
 
         <td>
             @include('usbActionButtons.delete')
         </td>
 
-        <td></td>
+        <td>
+
+        </td>
     @break
 
-    @case('not-active')
-        <td></td>
+    @case('not-initialized')
+        <td>
+
+        </td>
 
         <td>
             @include('usbActionButtons.activate')
         </td>
 
-        <td></td>
+        <td>
+
+        </td>
+    @break
+
+    @case('pulled-not-initialized')
+        <td>
+
+        </td>
+
+        <td>
+            @include('usbActionButtons.delete')
+        </td>
+
+        <td>
+
+        </td>
     @break
 
     @case('deleted')
-        <td></td>
+        <td>
+
+        </td>
 
         <td>
             @include('usbActionButtons.restore')
         </td>
 
-        <td></td>
+        <td>
+
+        </td>
     @break
 
 @endswitch

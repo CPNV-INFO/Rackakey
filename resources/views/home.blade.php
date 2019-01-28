@@ -2,7 +2,6 @@
 
 @section('content')
 
-
     <div class="top-page container">
         <div class="row flex-row justify-content-between align-items-center">
             <div class="col-8">

@@ -1,4 +1,8 @@
-<form method="post" action="/download/{{ $actualUsb->id }}">
-    @csrf
-    <button type="submit" class="btn btn-primary">Télécharger les données</button>
-</form>
+@if(Auth::user()->can('viewDownloadUsbDataButton', $actualUsb))
+
+    <form method="post" action="/download/{{ $actualUsb->id }}">
+        @csrf
+        <button type="submit" class="btn btn-primary">Télécharger les données</button>
+    </form>
+
+@endif
