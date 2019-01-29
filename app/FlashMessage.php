@@ -12,7 +12,7 @@ class FlashMessage extends Model
             case 'usbAction':
                 $request->session()->flash('flashmessage', [
                     "message" =>
-                        $listOfVars['usb']->name .
+                        $listOfVars['usb']->name . ' ' .
                         '(Numéro clé: ' . $listOfVars['usb']->id           . ', ' .
                         'status: '      . $listOfVars['usb']->status->name . ', ' .
                         'Rack: '        . $listOfVars['usb']->rack_number  . ', ' .
