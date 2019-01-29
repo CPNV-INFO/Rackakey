@@ -1,4 +1,4 @@
-@if(Auth::user()->can('viewDeleteUsbButton'))
+@if($user->can('viewDeleteUsbButton'))
 
     <form method="post" action="/usbs/{{ $actualUsb->id }}" class="usbDelete">
         @csrf

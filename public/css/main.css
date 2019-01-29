@@ -54,6 +54,11 @@ h6 {
   margin-bottom: 10vh;
 }
 
+.reservation-btn-container {
+  width: 90%;
+  margin: auto;
+}
+
 /** -- END TOP OF HOME PAGE **/
 
 /** TABLE **/
@@ -121,4 +126,17 @@ table tbody td {
 }
 
 /** -- END TABLE **/
+
+/** RESERVATION **/
+
+table.reservation-table {
+  width: 75%;
+}
+
+table.reservation-table tr td .input-group {
+  width: 95%;
+  margin: auto;
+}
+
+/** -- END RESERVATION **/
 

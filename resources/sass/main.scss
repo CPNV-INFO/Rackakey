@@ -29,6 +29,8 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.4;
 }
 
+
+
 /** GENERAL MIXINS **/
 @mixin box-shadow($color: rgba(0, 0, 0, 0.15)) {
   -webkit-box-shadow: 0px 0px 40px 0px $color;
@@ -56,6 +58,11 @@ h1, h2, h3, h4, h5, h6 {
 .top-page{
   margin-top: 5vh;
   margin-bottom: 10vh;
+}
+
+.reservation-btn-container{
+  width: 90%;
+  margin: auto;
 }
 /** -- END TOP OF HOME PAGE **/
 
@@ -132,3 +139,16 @@ table {
 
 /** -- END TABLE **/
 
+/** RESERVATION **/
+  table.reservation-table{
+    width: 75%;
+    tr{
+      td{
+        .input-group{
+          width: 95%;
+          margin: auto;
+        }
+      }
+    }
+  }
+/** -- END RESERVATION **/

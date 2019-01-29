@@ -29,7 +29,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user()->firstName . '.' . strtoupper(Auth::user()->lastName);
+        $user = Auth::user();
 
         $usbsWithTypes["available"]     =  UsbController::getAvailableUsbs();
         $usbsWithTypes["present"]       =  UsbController::getPresentUsbs();

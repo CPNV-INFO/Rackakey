@@ -107,6 +107,17 @@ $(function () {
       parentThis.submit();
     });
   });
+  $('#checkboxFolderFileInput').click(function () {
+    if ($('#checkboxFolderFileInput').is(':checked')) {
+      $('#fileInput').attr("webkitdirectory", "");
+      $('#fileInput').attr("mozdirectory", "");
+      $('#fileInput').attr("msdirectory", "");
+      $('#fileInput').attr("odirectory", "");
+      $('#fileInput').attr("directory", "");
+    } else {
+      $('#fileInput').removeAttr("webkitdirectory mozdirectory msdirectory odirectory directory");
+    }
+  });
 });
 
 /***/ }),

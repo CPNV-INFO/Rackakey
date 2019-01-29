@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\FlashMessage;
 use App\Status;
 use App\Usb;
 use Illuminate\Http\Request;
@@ -90,7 +91,13 @@ class UsbController extends Controller
         $usb->status_id = Status::notActive();
         $usb->save();
 
-        $this->createFlashMessage($request, $usb, "supprimée", "info");
+        FlashMessage::flash("usbAction", $request,
+            [
+                "usb" => $usb,
+                "actionMessage" => "supprimée",
+                "alertType" => "info"
+            ]
+        );
 
         return redirect('/home');
     }
@@ -109,7 +116,13 @@ class UsbController extends Controller
         $usb->status_id = Status::notActive();
         $usb->save();
 
-        $this->createFlashMessage($request, $usb, "restaurée", "success");
+        FlashMessage::flash("usbAction", $request,
+            [
+                "usb" => $usb,
+                "actionMessage" => "restaurée",
+                "alertType" => "success"
+            ]
+        );
 
         return redirect('/home');
     }
@@ -120,40 +133,50 @@ class UsbController extends Controller
         $usb->status_id = Status::active();
         $usb->save();
 
-        $this->createFlashMessage($request, $usb, "initialisée", "success");
+        FlashMessage::flash("usbAction", $request,
+            [
+                "usb" => $usb,
+                "actionMessage" => "initialisée",
+                "alertType" => "success"
+            ]
+        );
+
+
         return redirect('/home');
     }
 
-    public function in(Request $request, $id){
-        $usb = Usb::find($id);
+    public function in(Request $request, $id)
+    {
+        $usb = Usb::withTrashed()->find($id);
         $usb->rack_number = 1;
         $usb->save();
 
-        $this->createFlashMessage($request, $usb, "entrée dans le hub (simulation)", "info");
+        FlashMessage::flash("usbAction", $request,
+            [
+                "usb" => $usb,
+                "actionMessage" => "entrée dans le hub (simulation)",
+                "alertType" => "info"
+            ]
+        );
+
         return redirect('/home');
     }
 
-    public function out(Request $request, $id){
-        $usb = Usb::find($id);
+    public function out(Request $request, $id)
+    {
+        $usb = Usb::withTrashed()->find($id);
         $usb->rack_number = 0;
         $usb->save();
 
-        $this->createFlashMessage($request, $usb, "retirée du hub (simulation)", "info");
+        FlashMessage::flash("usbAction", $request,
+            [
+                "usb" => $usb,
+                "actionMessage" => "retirée du hub (simulation)",
+                "alertType" => "info"
+            ]
+        );
+
         return redirect('/home');
-    }
-
-
-    public function createFlashMessage($request, $usb, $word, $type)
-    {
-        $statusName = $usb->status->name;
-        $request->session()->flash('flashmessage', [
-            "message" => "$usb->name 
-            (Numéro clé: $usb->id, 
-            status: $statusName, 
-            Rack: $usb->rack_number, 
-            Port: $usb->port_number) a bien été $word",
-            "type" => $type
-        ]);
     }
 
     /** Returns all available usb keys

@@ -1,4 +1,4 @@
-@if(Auth::user()->can('viewInitializeUsbButton', $actualUsb))
+@if($user->can('viewInitializeUsbButton', $actualUsb))
 
     <form method="post" action="/usbs/restore/{{ $actualUsb->id }}">
         @csrf

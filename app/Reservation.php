@@ -20,12 +20,16 @@ class Reservation extends Model
         return $this->belongsTo('App\File');
     }
 
-    public function usb(){
-        return $this->hasMany('App\Usb');
-    }
+//    public function usb(){
+//        return $this->hasMany('App\Usb');
+//    }
 
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function usb(){
+        return $this->belongsToMany('App\Usb');
     }
 
     public function scopeFinished($query){
