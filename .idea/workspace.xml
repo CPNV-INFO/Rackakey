@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e40880c8-14bd-4e3f-b817-ac5d6d807f80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/webServers.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/4f2876f4-cd13-4dec-9c0a-6058df30cf8d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/4f2876f4-cd13-4dec-9c0a-6058df30cf8d.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Requests/ReservationRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/ReservationRequest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Policies/UsbPolicy.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Policies/UsbPolicy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/bootstrap/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/bootstrap/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/util.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/util.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/bootstrap/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/bootstrap/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/rackakey.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/rackakey.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/mix-manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reservation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/top_page.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/top_page.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/mainTable/_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/mainTable/_header.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -155,11 +135,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="408">
+              <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -176,11 +156,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+            <state relative-caret-position="393">
+              <caret line="202" column="5" lean-forward="true" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Reservation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/mainTable/_header.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -247,7 +245,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>number_key</find>
       <find>re</find>
       <find>public</find>
       <find>file</find>
@@ -277,6 +274,7 @@
       <find>Session</find>
       <find>$</find>
       <find>Sess</find>
+      <find>out(</find>
     </findStrings>
     <replaceStrings>
       <replace>numberBetween</replace>
@@ -298,7 +296,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/resources/views/mainTable/usbInputOutputTests.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/mainTable/_header.blade.php" />
         <option value="$PROJECT_DIR$/webpack.mix.js" />
         <option value="$PROJECT_DIR$/database/migrations/2019_01_11_123118_create_reservation_usb_table.php" />
         <option value="$PROJECT_DIR$/database/seeds/ReservationTableSeeder.php" />
@@ -319,7 +316,6 @@
         <option value="$PROJECT_DIR$/resources/views/usbActionButtons/restore.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
-        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/rackakey.js" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/storage/framework/views/5651401724e0ec3f5eeb1707bb1a5698537ffaa9.php" />
@@ -328,8 +324,6 @@
         <option value="$PROJECT_DIR$/database/seeds/FileTableSeeder.php" />
         <option value="$PROJECT_DIR$/app/Role.php" />
         <option value="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" />
-        <option value="$PROJECT_DIR$/app/Reservation.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" />
         <option value="$PROJECT_DIR$/resources/views/usbActionButtons/download.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/usbActionButtons/explore.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsbCommunicationController.php" />
@@ -348,6 +342,10 @@
         <option value="$PROJECT_DIR$/app/Http/Kernel.php" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/resources/views/top_page.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" />
+        <option value="$PROJECT_DIR$/app/Reservation.php" />
+        <option value="$PROJECT_DIR$/resources/views/mainTable/_header.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
       </list>
     </option>
   </component>
@@ -485,13 +483,6 @@
               <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rackakey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Requests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -526,6 +517,13 @@
               <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rackakey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="mainTable" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Rackakey" type="b2602c69:ProjectViewProjectNode" />
@@ -607,12 +605,12 @@
       <workItem from="1548747110842" duration="444000" />
       <workItem from="1548767885908" duration="23100000" />
       <workItem from="1548841249867" duration="21000" />
-      <workItem from="1548856094718" duration="9989000" />
+      <workItem from="1548856094718" duration="10361000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="247124000" />
+    <option name="totallyTimeSpent" value="247496000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -627,7 +625,7 @@
     <frame x="1974" y="-8" width="1874" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29658213" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.29658213" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -649,7 +647,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info active="true" anchor="right" id="Database" order="4" visible="true" weight="0.1802646" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.1802646" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26405868" />
@@ -775,13 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="368">
           <caret line="15" column="173" selection-start-line="15" selection-start-column="173" selection-end-line="15" selection-end-column="173" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Reservation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="21" lean-forward="true" selection-start-line="21" selection-end-line="21" />
         </state>
       </provider>
     </entry>
@@ -921,13 +912,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -942,13 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="427">
           <caret line="99" selection-start-line="99" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/mainTable/_header.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="44" selection-start-line="7" selection-start-column="44" selection-end-line="7" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -1015,8 +992,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="125" lean-forward="true" selection-start-line="125" selection-end-line="125" />
+        <state relative-caret-position="393">
+          <caret line="202" column="5" lean-forward="true" selection-start-line="202" selection-start-column="5" selection-end-line="202" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Reservation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="26" column="27" lean-forward="true" selection-start-line="26" selection-start-column="27" selection-end-line="26" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/mainTable/_header.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="32" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="32" />
         </state>
       </provider>
     </entry>

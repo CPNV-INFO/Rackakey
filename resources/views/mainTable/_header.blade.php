@@ -1,7 +1,7 @@
 <!-- Table Header -->
 <thead>
 <tr>
-    <th class="">Numéro Clé</th>
+    {{--<th class="">Numéro Clé</th>--}}
     <th class="">Etat</th>
     <th class="">Port rack</th>
     <th class="">Nom de la clé</th>

@@ -13,71 +13,6 @@ use Session;
 class UsbController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Usb $usb
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Usb $usb)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Usb $usb
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Usb $usb)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Usb $usb
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Usb $usb)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param Request $request
@@ -148,7 +83,8 @@ class UsbController extends Controller
     public function in(Request $request, $id)
     {
         $usb = Usb::withTrashed()->find($id);
-        $usb->rack_number = 1;
+        $usb->rack_number = 1; // Number taken for test only
+        $usb->port_number = 1; // Number taken for test only
         $usb->save();
 
         FlashMessage::flash("usbAction", $request,
@@ -165,7 +101,8 @@ class UsbController extends Controller
     public function out(Request $request, $id)
     {
         $usb = Usb::withTrashed()->find($id);
-        $usb->rack_number = 0;
+        $usb->rack_number = 0; // Number taken for test only
+        $usb->port_number = 0; // Number taken for test only
         $usb->save();
 
         FlashMessage::flash("usbAction", $request,

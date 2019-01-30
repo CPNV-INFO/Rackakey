@@ -22,7 +22,7 @@
                 data-usbfreespace="{{  \App\Usb::formatFileSize( $actualUsb->freeSpaceInBytes) }}"
                 data-createdat="{{ $actualUsb->created_at }}">
 
-                @include('mainTable.usbIdColumn')
+{{--                @include('mainTable.usbIdColumn')--}}
                 @include('mainTable.usbStatusColumn')
                 @include('mainTable.usbRackPortNumberColumn')
                 @include('mainTable.usbNameColumn')
