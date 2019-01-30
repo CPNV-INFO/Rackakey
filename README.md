@@ -22,7 +22,7 @@ cd /path/to/your/local/clone/of/rackakey
 composer install
 
 # install the npm dependencies
-cd public && npm i
+npm i
 ```
 
 ### 3. Set up .env and database
