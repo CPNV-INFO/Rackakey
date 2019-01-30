@@ -24,8 +24,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        FileUpload::maxSize();
-        return view("reservation");
+        return view("reservation")->with("reservations", Reservation::withUsb()->withFile()->actualUser()->orderByReservationDate()->get());
     }
 
     /**
@@ -62,14 +61,17 @@ class ReservationController extends Controller
         $reservation->finished          =  false;
         $reservation->save();
 
-        // Let's create the zip in FileController::createFile with file we just received by request.
-        $reservation->file_id = FileController::createFile($request, $reservation->id);
-        $reservation->update();
+        // Let's create the zip in FileController::createFile with file if we just received some
+        if($request->file('files') !== null) {
+            $reservation->file_id = FileController::createFile($request, $reservation->id);
+            $reservation->update();
+
+            UsbCommunicationController::sendFileToUsb(File::find($reservation->file_id)->nameOfCompressedFile);
+        }
 
         // Make the many-to-many relation
         $reservation->usb()->attach($usbIdWithEnoughSpace);
 
-        UsbCommunicationController::sendFileToUsb(File::find($reservation->file_id)->nameOfCompressedFile);
 
         FlashMessage::flash("personalized", $request,
             [
@@ -89,11 +91,14 @@ class ReservationController extends Controller
         $numberUsbWantedLeft = $request->number_keys;
 
         // Let's first get the total amount of space we need in total
-        foreach ($request->file('files') as $file) {
-            $totalSize += $file->getSize();
+        if($request->file('files') !== null){
+            foreach ($request->file('files') as $file) {
+                $totalSize += $file->getSize();
+            }
         }
 
         $usbIdWithEnoughSpace = array();
+
         // Let's first check if there is available usb with the size we want before we continue !
         foreach (UsbController::getAvailableUsbs() as $usb) {
             if ($usb->freeSpaceInBytes > $totalSize) {
@@ -114,17 +119,6 @@ class ReservationController extends Controller
             FlashMessage::flash("personalized", $request,
                 [
                     "message" => "Malheureusement il n'y a pas assez d'usbs disponibles avec l'espace demandé pour satisfaire votre demande",
-                    "alertType" => "danger"
-                ]
-            );
-
-            return false;
-        }
-
-        if($totalSize > FileUpload::maxSize()){
-            FlashMessage::flash("personalized", $request,
-                [
-                    "message" => "La taille des données que vous envoyez est plus grande que celle autorisée par le serveur php (max_post_size). Veuillez contacter l'administrateur afin qu'il augmente cette valeur",
                     "alertType" => "danger"
                 ]
             );

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Reservation extends Model
 {
@@ -59,4 +60,17 @@ class Reservation extends Model
     {
         return $query->with('user');
     }
+
+    static public function scopeWithUsb($query){
+        return $query->with('usb');
+    }
+
+    static public function scopeActualUser($query){
+        return $query->where('user_id', '=', Auth::user()->id);
+    }
+
+    static public function scopeWithFile($query){
+        return $query->with('file');
+    }
+
 }

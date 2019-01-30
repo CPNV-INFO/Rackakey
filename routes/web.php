@@ -30,3 +30,6 @@ Route::post('usbs/in/{id}','UsbController@in');
 
 /* RESERVATION*/
 Route::resource('reservation', 'ReservationController');
+
+/* FILE */
+Route::resource('file', 'FileController');

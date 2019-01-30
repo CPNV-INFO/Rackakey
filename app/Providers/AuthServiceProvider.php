@@ -37,11 +37,13 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::resource('usbs', 'App\Policies\UsbPolicy');
+        Gate::resource('files', 'App\Policies\FilePolicy');
 
         Gate::define('viewSoftDelete',              'App\Policies\UsbPolicy@viewSoftDelete');
         Gate::define('viewDeleteUsbButton',         'App\Policies\UsbPolicy@viewDeleteUsbButton');
         Gate::define('viewDownloadUsbDataButton',   'App\Policies\UsbPolicy@viewDownloadUsbDataButton');
         Gate::define('viewExploreUsbButton',        'App\Policies\UsbPolicy@viewExploreUsbButton');
         Gate::define('viewInitializeUsbButton',     'App\Policies\UsbPolicy@viewInitializeUsbButton');
+        Gate::define('downloadZipToUsbFile',        'App\Policies\FilePolicy@downloadZipToUsbFile');
     }
 }

@@ -37,7 +37,6 @@
                            aria-label="Nom réservation"
                            aria-describedby="addon-wrapping">
 
-
                 </div>
                 @if ($errors->any())
                     {{ $errors->first('reservation_name') }}
@@ -80,6 +79,47 @@
     </table>
 </form>
 
-@include('modal')
+<div class="container">
+    <div class="row flex-row justify-content-between align-items-center">
+        <div class="col-8">
+            <h1 class="mt-5">Mes réservations</h1>
+        </div>
+    </div>
+</div>
+
+
+<table class="reservation-table mt-2">
+    <thead>
+    <tr>
+        <th class="">Nom réservation</th>
+        <th class="">Date réservation</th>
+        <th class="">Date réservation clôturée</th>
+        <th class="">Fichiers envoyés sur la/les clé(s)</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach($reservations as $reservation)
+        <tr>
+            <td>
+                {{ $reservation->name }}
+            </td>
+            <td>
+                {{ $reservation->date_reserved }}
+            </td>
+            <td>
+                {{ $reservation->date_returned }}
+            </td>
+            <td>
+                @if($reservation->file()->exists())
+                    <form method="get" action="/file/{{ $reservation->file->id }}">
+                        @csrf
+                        <button class="btn btn-dark" type="submit">Télécharger</button>
+                    </form>
+                @endif
+            </td>
+        </tr>
+    @endforeach
+    </tbody>
+</table>
 @endsection
 

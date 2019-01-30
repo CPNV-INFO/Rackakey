@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             UsbTableSeeder::class,
             FileTableSeeder::class,
             ReservationTableSeeder::class,
-            ReservationUsbTableSeeder::class
+            ReservationUsbTableSeeder::class,
         ]);
     }
 }
