@@ -17,10 +17,13 @@ class CreateUsbsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('uuid');
-            $table->integer('freeKbyteSpace');
+            $table->unsignedBigInteger('freeSpaceInBytes');
             $table->integer('status_id')->unsigned();
+            $table->integer('rack_number');
+            $table->integer('port_number');
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

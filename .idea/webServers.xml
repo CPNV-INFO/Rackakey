@@ -2,7 +2,7 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="e2fc3b7c-77fb-4f5d-84ca-b7763d32e354" name="rackakey" url="http://prw2-laravel">
+      <webServer id="f135eda1-7361-4fa8-af62-8da1f1f1e433" name="prw2-laravel" url="http://prw2-laravel">
         <fileTransfer host="prw2-laravel" port="22" rootFolder="/var/www" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />

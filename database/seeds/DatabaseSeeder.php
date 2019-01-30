@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use \Illuminate\Support\Facades\File;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,6 +11,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        File::deleteDirectory(storage_path('app/reservations'));
+
         $this->call([
             RoleTableSeeder::class,
             UsersTableSeeder::class,

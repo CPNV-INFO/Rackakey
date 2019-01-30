@@ -1,0 +1,1 @@
+<td class=""> {{ $actualUsb->id }}</td>

@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Role;
 use App\Status;
 use App\Usb;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -25,28 +29,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (env('ACTUAL_USER', -1) === -1) {
-            return back()->withErrors('ACTUAL_USER not found into .env. Please create a default ACTUAL_USER="professor"');
-        }
+        $user = Auth::user();
 
-        $user = env('ACTUAL_USER', -1);
+        $usbsWithTypes["available"]     =  UsbController::getAvailableUsbs();
+        $usbsWithTypes["present"]       =  UsbController::getPresentUsbs();
+        $usbsWithTypes["used"]          =  UsbController::getUsedUsbs();
+        $usbsWithTypes["absent"]        =  UsbController::getAbsentUsbs();
+        $usbsWithTypes["not-initialized"]           =  UsbController::getNotInitializedUsbs();
+        $usbsWithTypes["pulled-not-initialized"]    =  UsbController::getPulledAndNotInizialedUsbs();
 
-        if( env('ACTUAL_USER') === "professor"){
-            $usb = Usb::where('status_id', '=', Status::available())->get();
-        }else if(env('ACTUAL_USER') === "secretary"){
-            $usb = Usb::where('status_id', '=', Status::available())
-                ->orWhere('status_id', '=', Status::present())
-                ->orWhere('status_id', '=', Status::notInitialized())->get();
-        }else if(env('ACTUAL_USER') === "admin"){
-            $usb = Usb::where('status_id', '=', Status::available())
-                ->orWhere('status_id', '=', Status::present())
-                ->orWhere('status_id', '=', Status::absent())
-                ->orWhere('status_id', '=', Status::used())
-                ->orWhere('status_id', '=', Status::notInitialized())
-                ->get();
-        }
+        if(Auth::user()->can('viewSoftDelete'))
+            $usbsWithTypes["deleted"] = UsbController::getDeletedUsbs()->get();
 
-//        dd($usb);
-        return view('home', ["usb" => $usb, "user" => $user]);
+        return view('home', ["usbsWithTypes" => $usbsWithTypes, "user" => $user]);
     }
 }

@@ -15,12 +15,15 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->dateTime('date_reserved');
             $table->dateTime('date_returned')->nullable();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->integer('file_id')->unsigned()->nullable();
+            $table->boolean('finished')->default(false);
             $table->foreign('file_id')->references('id')->on('files');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

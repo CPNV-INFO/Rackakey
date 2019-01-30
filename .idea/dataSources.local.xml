@@ -9,7 +9,7 @@
       <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
-      <introspection-schemas>*:@,rackakey</introspection-schemas>
+      <introspection-schemas>*:@,mysql,performance_schema,rackakey,sys,vselectricite</introspection-schemas>
     </data-source>
   </component>
 </project>
