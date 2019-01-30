@@ -99,7 +99,7 @@ class UsbPolicy
             return true;
 
         // If the usb shown is actually the one that the user reseved but that is not finished (actually reserved by him)
-//        dd($usb->reservation);
+
         if($usb->reservation->count() > 0 && !$usb->reservation->first->finished){
             if($usb->reservation->first()->user_id == Auth::id())
                 return true;

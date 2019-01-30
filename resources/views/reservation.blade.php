@@ -57,6 +57,8 @@
                             <input type="checkbox" id="checkboxFolderFileInput" aria-label="Dossier" checked>
                             &nbsp; Dossier
                         </div>
+
+
                     </div>
 
 
@@ -68,7 +70,9 @@
 
                 </div>
                 @if ($errors->any())
-                    {{ $errors->first('files[]') }}
+                    @foreach($errors->all() as $error)
+                        {{ $error }}<br />
+                    @endforeach
                 @endif
             </td>
         </tr>

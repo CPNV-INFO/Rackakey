@@ -11,14 +11,13 @@ use ZanySoft\Zip\Zip;
 class FileController extends Controller
 {
 
-    public static function createFile(ReservationRequest $request){
+    public static function createFile(ReservationRequest $request, $reservationId){
         $file = new File();
         $file->nameOfCompressedFile = "";
         $file->save();
-
         $lastId = $file->id;
 
-        $staticFolder       = 'reservations\reservation_' . $lastId . '\\';
+        $staticFolder       = 'reservations\reservation_' . $reservationId . '\\';
         $staticFolderTmp    = $staticFolder . 'tmp\\';
 
         $pathToZip          = 'app\\' . $staticFolder . 'filesToUsb.zip';

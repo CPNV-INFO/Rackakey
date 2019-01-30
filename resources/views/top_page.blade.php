@@ -15,7 +15,6 @@
     </div>
 
     @if(Session::has('flashmessage'))
-
         <div class="alert alert-{{ session('flashmessage')["type"] }}" role="alert">
             {{ session('flashmessage')["message"] }}
         </div>

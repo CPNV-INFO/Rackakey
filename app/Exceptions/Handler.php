@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\FlashMessage;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -46,6 +47,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($exception instanceof \Illuminate\Http\Exceptions\PostTooLargeException) {
+            FlashMessage::flash("personalized", $request,
+                [
+                    "message" => "La taille des données que vous envoyez est plus grande que celle autorisée par le serveur php (max_post_size). Veuillez contacter l'administrateur afin qu'il augmente cette valeur si besoin.",
+                    "alertType" => "danger"
+                ]
+            );
+
+            return redirect('reservation');
+        }
+
         return parent::render($request, $exception);
     }
 }

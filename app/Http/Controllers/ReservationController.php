@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\FileUpload;
 use App\FlashMessage;
 use App\Http\Requests\ReservationRequest;
 use App\Reservation;
@@ -23,6 +24,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
+        FileUpload::maxSize();
         return view("reservation");
     }
 
@@ -46,25 +48,28 @@ class ReservationController extends Controller
     public function store(ReservationRequest $request)
     {
         $validated = $request->validated();
+
         $usbIdWithEnoughSpace = $this->checkIfEnoughUsbForThisSpace($request);
         if(!$usbIdWithEnoughSpace){
             return redirect('/reservation');
         }
-
-        $fileId = FileController::createFile($request);
-
-        UsbCommunicationController::sendFileToUsb(File::find($fileId)->nameOfCompressedFile);
 
         $reservation = new Reservation();
         $reservation->name              =  $request->reservation_name;
         $reservation->date_reserved     =  now();
         $reservation->date_returned     =  null;
         $reservation->user_id           =  Auth::user()->id;
-        $reservation->file_id           =  $fileId;
         $reservation->finished          =  false;
         $reservation->save();
 
+        // Let's create the zip in FileController::createFile with file we just received by request.
+        $reservation->file_id = FileController::createFile($request, $reservation->id);
+        $reservation->update();
+
+        // Make the many-to-many relation
         $reservation->usb()->attach($usbIdWithEnoughSpace);
+
+        UsbCommunicationController::sendFileToUsb(File::find($reservation->file_id)->nameOfCompressedFile);
 
         FlashMessage::flash("personalized", $request,
             [
@@ -76,8 +81,10 @@ class ReservationController extends Controller
         return redirect('reservation');
     }
 
+
     public function checkIfEnoughUsbForThisSpace(ReservationRequest $request)
     {
+
         $totalSize = 0;
         $numberUsbWantedLeft = $request->number_keys;
 
@@ -107,6 +114,17 @@ class ReservationController extends Controller
             FlashMessage::flash("personalized", $request,
                 [
                     "message" => "Malheureusement il n'y a pas assez d'usbs disponibles avec l'espace demandé pour satisfaire votre demande",
+                    "alertType" => "danger"
+                ]
+            );
+
+            return false;
+        }
+
+        if($totalSize > FileUpload::maxSize()){
+            FlashMessage::flash("personalized", $request,
+                [
+                    "message" => "La taille des données que vous envoyez est plus grande que celle autorisée par le serveur php (max_post_size). Veuillez contacter l'administrateur afin qu'il augmente cette valeur",
                     "alertType" => "danger"
                 ]
             );

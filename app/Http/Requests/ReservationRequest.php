@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\FileUpload;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ReservationRequest extends FormRequest
