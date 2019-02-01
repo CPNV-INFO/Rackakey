@@ -34,5 +34,9 @@ Route::get('reservation_show',      'ReservationController@showReservations');
 Route::get('reservation_create',    'ReservationController@createReservations');
 
 /* FILE */
-Route::resource('file', 'FileController');
-Route::get('files/{id}', 'FileController@showFilesList');
+Route::resource('file',     'FileController');
+Route::get('files/{id}',    'FileController@showFilesList');
+
+/* FILE UPLOAD */
+Route::get('getMaxFileUploads', 'FileUploadController@getMaxFileUploads');
+Route::get('getPostMaxSize', 'FileUploadController@getPostMaxSize');

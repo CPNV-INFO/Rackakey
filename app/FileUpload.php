@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FileUpload extends Model
 {
-    private $maxFileSize;
-
-    static public function maxSize(){
+    static public function getPostMaxSize(){
         $actualMaxSize =  ini_get('post_max_size');
 
         if(preg_match('/(\d+)K/', $actualMaxSize, $matches)) // KiloBytes
@@ -23,7 +21,7 @@ class FileUpload extends Model
         return $inBytes;
     }
 
-    static public function maxFileUploadNumber(){
+    static public function getMaxFileUploads(){
         $actualMaxFileUploadNumber =  ini_get('max_file_uploads');
         return $actualMaxFileUploadNumber;
     }

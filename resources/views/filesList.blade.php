@@ -12,12 +12,16 @@
 <table class="reservation-table mt-2">
     <thead>
     <tr>
+        <th class=""></th>
         <th class="">Nom du fichier</th>
     </tr>
     </thead>
     <tbody>
-    @foreach($filesList as $file)
+    @foreach($filesList as $index =>  $file)
         <tr>
+            <td>
+                {{ $index+1 }}
+            </td>
             <td>
                 {{ $file }}
             </td>

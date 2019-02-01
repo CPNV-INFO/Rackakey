@@ -46,7 +46,7 @@
                 <div class="input-group">
                     <div class="custom-file">
                         <input type="file" name="files[]" id="fileInput" class="custom-file-input" id="inputGroupFile04"
-                               aria-describedby="inputGroupFileAddon04"
+                               aria-describedby="sendFiles"
                                webkitdirectory mozdirectory msdirectory odirectory directory multiple="multiple">
                         <label class="custom-file-label" for="inputGroupFile04">Choisir les fichiers</label>
 
@@ -63,7 +63,7 @@
 
                     @csrf
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit" id="inputGroupFileAddon04">Envoyer
+                        <button class="btn btn-outline-secondary" type="submit" id="sendFiles">Envoyer
                         </button>
                     </div>
 
@@ -78,5 +78,7 @@
         </tbody>
     </table>
 </form>
+
+@include('reservation_create_modal_error')
 @endsection
 
