@@ -17,6 +17,10 @@ use ZanySoft\Zip\Zip;
 class ReservationController extends Controller
 {
 
+//Route::get('reservation_show', 'ReservationController@showReservations');
+//Route::get('reservation_create', 'ReservationController@createReservations');
+
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +28,19 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return view("reservation")->with("reservations", Reservation::withUsb()->withFile()->actualUser()->orderByReservationDate()->get());
+        $this->createReservations();
+    }
+
+    /**
+     * Display the page that create reservations
+     */
+    public function createReservations(){
+        return view("reservation_create");
+    }
+
+    public function showReservations(){
+        return view("reservation_show")
+            ->with("reservations", Reservation::withUsb()->withFile()->actualUser()->orderByReservationDate()->get());
     }
 
     /**

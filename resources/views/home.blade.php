@@ -5,9 +5,15 @@
 @section('title', 'Gestion rack à clés USB')
 @include('top_page')
 
+
 <div class="reservation-btn-container flex-row justify-content-end align-items-end mb-3">
-    <a href="reservation" class="btn btn-lg btn-dark" name="addreservation">Créer une réservation</a>
+    <a href="reservation_show" class="btn btn-lg btn-dark" name="addreservation">Mes réservations</a>
 </div>
+
+<div class="reservation-btn-container flex-row justify-content-end align-items-end mb-3">
+    <a href="reservation_create" class="btn btn-lg btn-dark" name="addreservation">Créer une réservation</a>
+</div>
+
 <table>
     @include('mainTable._header')
 

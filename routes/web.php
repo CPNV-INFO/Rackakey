@@ -29,7 +29,9 @@ Route::post('usbs/out/{id}','UsbController@out');
 Route::post('usbs/in/{id}','UsbController@in');
 
 /* RESERVATION*/
-Route::resource('reservation', 'ReservationController');
+Route::resource('reservation',      'ReservationController');
+Route::get('reservation_show',      'ReservationController@showReservations');
+Route::get('reservation_create',    'ReservationController@createReservations');
 
 /* FILE */
 Route::resource('file', 'FileController');
