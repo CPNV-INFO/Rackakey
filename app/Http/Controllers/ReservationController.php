@@ -115,11 +115,14 @@ class ReservationController extends Controller
             }
         }
 
+
+
         $usbIdWithEnoughSpace = array();
 
         // Let's first check if there is available usb with the size we want before we continue !
+
         foreach (UsbController::getAvailableUsbs() as $usb) {
-            if ($usb->freeSpaceInBytes > $totalSize) {
+            if ($usb->freeSpaceInBytes >= $totalSize) {
                 $usbIdWithEnoughSpace[] = $usb->id;
 
                 $numberUsbWantedLeft -= 1;
@@ -128,6 +131,7 @@ class ReservationController extends Controller
                     break;
             }
         }
+
 
         // If enough usbs with the good amount of available space have been found,
         // the $numberUsbWantedLeft should be zero.
