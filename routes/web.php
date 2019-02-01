@@ -35,3 +35,4 @@ Route::get('reservation_create',    'ReservationController@createReservations');
 
 /* FILE */
 Route::resource('file', 'FileController');
+Route::get('files/{id}', 'FileController@showFilesList');

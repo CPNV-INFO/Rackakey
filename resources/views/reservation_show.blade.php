@@ -15,6 +15,7 @@
         <th class="">Nom réservation</th>
         <th class="">Date réservation</th>
         <th class="">Date réservation clôturée</th>
+        <th class="">Nombre de fichiers</th>
         <th class="">Fichiers envoyés sur la/les clé(s)</th>
     </tr>
     </thead>
@@ -29,6 +30,11 @@
             </td>
             <td>
                 {{ $reservation->date_returned }}
+            </td>
+            <td>
+                <a href="/files/{{ $reservation->file->id }}">
+                    {{ $reservation->file->numberOfFiles }}
+                </a>
             </td>
             <td>
                 @if($reservation->file()->exists())

@@ -28,7 +28,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $this->createReservations();
+        // Make the /reservation link go to reservation_create by now
+        return $this->createReservations();
     }
 
     /**
@@ -39,6 +40,7 @@ class ReservationController extends Controller
     }
 
     public function showReservations(){
+
         return view("reservation_show")
             ->with("reservations", Reservation::withUsb()->withFile()->actualUser()->orderByReservationDate()->get());
     }

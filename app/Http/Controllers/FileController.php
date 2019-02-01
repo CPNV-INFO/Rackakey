@@ -35,6 +35,7 @@ class FileController extends Controller
     public static function createFile(ReservationRequest $request, $reservationId){
         $file = new File();
         $file->nameOfCompressedFile = "";
+        $file->numberOfFiles = 0;
         $file->save();
         $lastId = $file->id;
 
@@ -54,11 +55,31 @@ class FileController extends Controller
             $zip->add(storage_path('app\\' . $pathToFile));
         }
 
-        $zip->close();
-
         $file->nameOfCompressedFile = $pathToZip;
+        $file->numberOfFiles = count($zip->listFiles());
         $file->update();
 
+        $zip->close();
+
         return $lastId;
+    }
+
+    public function showFilesList(Request $request, $id){
+
+        $reservationId = File::with('reservation')->where('id', $id)->first()->reservation->id;
+
+        $zip = Zip::open(
+            storage_path(
+                File::with('reservation')
+                    ->where('id', $id)->first()
+                    ->nameOfCompressedFile
+            )
+        );
+
+        $filesList = $zip->listFiles();
+
+        $zip->close();
+
+        return view("filesList")->with("filesList", $filesList);
     }
 }

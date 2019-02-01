@@ -22,4 +22,9 @@ class FileUpload extends Model
 
         return $inBytes;
     }
+
+    static public function maxFileUploadNumber(){
+        $actualMaxFileUploadNumber =  ini_get('max_file_uploads');
+        return $actualMaxFileUploadNumber;
+    }
 }

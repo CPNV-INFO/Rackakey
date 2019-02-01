@@ -25,8 +25,8 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'files' => 'nullable',
-            'files.*' => 'file',
+            'files' => 'nullable|max:'  . FileUpload::maxFileUploadNumber(),
+            'files.*' => 'file|max:'    . FileUpload::maxFileUploadNumber(),
             'reservation_name' => 'required',
             'number_keys' => 'required|min:1'
         ];
