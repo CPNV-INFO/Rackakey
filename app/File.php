@@ -14,4 +14,6 @@ class File extends Model
     static public function scopeWithReservation(Request $request){
         return $request->with('reservation');
     }
+
+
 }

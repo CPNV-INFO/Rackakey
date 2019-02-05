@@ -58,6 +58,15 @@ class Handler extends ExceptionHandler
             return redirect('reservation');
         }
 
+        if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
+            FlashMessage::flash("personalized", $request,
+                [
+                    "message" => "File exception",
+                    "alertType" => "danger"
+                ]
+            );
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -118,6 +118,21 @@ $(function () {
       $('#fileInput').removeAttr("webkitdirectory mozdirectory msdirectory odirectory directory");
     }
   });
+  $('#fileInput').on('change', function (e) {
+    console.log($(this));
+    console.log();
+    $.ajax({
+      url: "/getMaxFileUploads"
+    }).done(function (data) {
+      var jsonData = JSON.parse(data);
+
+      if (e.target.files.length > jsonData["max_file_uploads"]) {
+        $('.modal').modal('show');
+      }
+    }).fail(function (data) {
+      console.log("Error from server");
+    });
+  });
 });
 
 /***/ }),

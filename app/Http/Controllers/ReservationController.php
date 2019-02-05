@@ -17,6 +17,10 @@ use ZanySoft\Zip\Zip;
 class ReservationController extends Controller
 {
 
+//Route::get('reservation_show', 'ReservationController@showReservations');
+//Route::get('reservation_create', 'ReservationController@createReservations');
+
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +28,21 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return view("reservation")->with("reservations", Reservation::withUsb()->withFile()->actualUser()->orderByReservationDate()->get());
+        // Make the /reservation link go to reservation_create by now
+        return $this->createReservations();
+    }
+
+    /**
+     * Display the page that create reservations
+     */
+    public function createReservations(){
+        return view("reservation_create");
+    }
+
+    public function showReservations(){
+
+        return view("reservation_show")
+            ->with("reservations", Reservation::withUsb()->withFile()->actualUser()->orderByReservationDate()->get());
     }
 
     /**
@@ -97,11 +115,14 @@ class ReservationController extends Controller
             }
         }
 
+
+
         $usbIdWithEnoughSpace = array();
 
         // Let's first check if there is available usb with the size we want before we continue !
+
         foreach (UsbController::getAvailableUsbs() as $usb) {
-            if ($usb->freeSpaceInBytes > $totalSize) {
+            if ($usb->freeSpaceInBytes >= $totalSize) {
                 $usbIdWithEnoughSpace[] = $usb->id;
 
                 $numberUsbWantedLeft -= 1;
@@ -110,6 +131,7 @@ class ReservationController extends Controller
                     break;
             }
         }
+
 
         // If enough usbs with the good amount of available space have been found,
         // the $numberUsbWantedLeft should be zero.

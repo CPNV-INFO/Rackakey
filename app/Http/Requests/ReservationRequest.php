@@ -25,8 +25,8 @@ class ReservationRequest extends FormRequest
     public function rules()
     {
         return [
-            'files' => 'nullable',
-            'files.*' => 'file',
+            'files' => 'nullable|max:'  . FileUpload::getMaxFileUploads(),
+            'files.*' => 'file|max:'    . round(FileUpload::getPostMaxSize()/1000), //  "max:" validator waits for kilobytes value
             'reservation_name' => 'required',
             'number_keys' => 'required|min:1'
         ];
