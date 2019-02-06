@@ -1,0 +1,5 @@
+SCC = This is a source code control file
+
+[USBClassLibrary.csproj]
+SCC_Aux_Path = http://192.168.0.1/VaultService|Main:2
+SCC_Project_Name = $/Library/USBClass/USBClassLibrary

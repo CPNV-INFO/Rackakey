@@ -1,0 +1,125 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using MySql.Data.MySqlClient;
+
+namespace ListDevices
+{
+    class DbConnection
+    {
+       
+        private MySqlConnection connection;
+
+        public DbConnection()
+        {
+            InitConnection();
+        }
+
+        /// <summary>
+        /// Init the connection to MySql DB
+        /// </summary>
+        private void InitConnection()
+        {
+            string connection = "SERVER=127.0.0.1; DATABASE=rackakey; UID=root; PASSWORD=";
+            this.connection = new MySqlConnection(connection);
+            this.connection.Open();
+        }
+
+
+
+        /// <summary>
+        /// Add a new usb Key if the key already exist update it
+        /// </summary>
+        /// <param name="newUsbKey"></param>
+        public void AddUsbKey(UsbKey newUsbKey)
+        {
+            List<UsbKey> usbKeys = new List<UsbKey>();
+            bool usbKeyExist = false;
+
+            usbKeys = GetUsbKeys();
+
+            foreach (UsbKey usbKey in usbKeys)
+            {
+                //if the key already exist update his rack and is port
+                if (usbKey.Name == newUsbKey.Name)
+                {
+                    MySqlCommand command = this.connection.CreateCommand();
+
+                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number WHERE name = @name";
+
+                    command.Parameters.AddWithValue("@name", newUsbKey.Name);
+                    command.Parameters.AddWithValue("@rack_number", newUsbKey.Rack_number);
+                    command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+
+            //if the usb key dosen't exist we try to add it in the DB
+            if (!usbKeyExist)
+            {
+                try
+                {
+                    MySqlCommand command = this.connection.CreateCommand(); //create a new request for DB
+
+                    command.CommandText = "INSERT INTO usbs (name, uuid, freeSpaceInBytes, status_id, rack_number, port_number, created_at) VALUES (@name, @uuid, @freeSpaceInBytes, @status_id, @rack_number, @port_number, @created_at)";
+
+                    command.Parameters.AddWithValue("@name", newUsbKey.Name);
+                    command.Parameters.AddWithValue("@uuid", newUsbKey.Uuid);
+                    command.Parameters.AddWithValue("@freeSpaceInBytes", newUsbKey.FreeSpaceInBytes);
+                    command.Parameters.AddWithValue("@status_id", newUsbKey.Status_id);
+                    command.Parameters.AddWithValue("@rack_number", newUsbKey.Rack_number);
+                    command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
+                    command.Parameters.AddWithValue("@created_at", newUsbKey.Created_at);
+
+                    command.ExecuteNonQuery(); 
+                }
+                catch (Exception exc)
+                {
+                    Console.WriteLine("L'exception suivante est apparue : " + exc);
+                }
+            }
+
+            
+        }
+
+        /// <summary>
+        /// Get all usb keys in the usbs table 
+        /// </summary>
+        /// <returns></returns>
+        public List<UsbKey> GetUsbKeys()
+        {
+            List<UsbKey> usbKeys = new List<UsbKey>();
+
+            MySqlCommand command = this.connection.CreateCommand();
+
+            command.CommandText = "SELECT * FROM usbs";
+
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while(reader.Read())
+            {
+                UsbKey usbKey = new UsbKey
+                    (
+                        reader.GetString("name"),
+                        reader.GetString("uuid"),
+                        reader.GetInt32("freeSpaceInBytes"),
+                        reader.GetDateTime("created_at"),
+                        reader.GetDateTime("updated_at"),
+                        reader.GetInt32("status_id"),
+                        reader.GetInt32("rack_number"),
+                        reader.GetInt32("port_number")
+                    );
+
+                usbKeys.Add(usbKey);
+            }
+
+
+            return usbKeys;
+
+        }
+    }
+}
