@@ -10,25 +10,25 @@ namespace ListDevices
     {
         private string name;
         private string uuid;
-        private int freeSpaceInBytes;
+        private UInt64 freeSpaceInBytes;
         private int status_id;
         private int rack_number;
         private int port_number;
-        private DateTime createtd_at;
-        private DateTime updated_at;
+        private string createtd_at;
+        private string updated_at;
 
 
-        public string Name { get; }
-        public string Uuid { get; }
-        public int FreeSpaceInBytes { get; }
-        public int Status_id { get; }
-        public int Rack_number { get; }
-        public int Port_number { get; }
-        public DateTime Created_at { get; }
-        public DateTime Updated_at { get; }
+        public string Name { get{ return name; } }
+        public string Uuid { get { return uuid; } }
+        public UInt64 FreeSpaceInBytes { get { return freeSpaceInBytes; } }
+        public int Status_id { get { return status_id; } }
+        public int Rack_number { get { return rack_number; } }
+        public int Port_number { get { return port_number; } }
+        public string Created_at { get { return createtd_at;  } }
+        public string Updated_at { get { return updated_at; } }
 
 
-        public UsbKey(string name, string uuid, int freeSpaceInBytes, DateTime createtd_at, DateTime updated_at, int status_id = (int)Status.Disponible, int rack_number = 0, int port_number = 0)
+        public UsbKey(string name, string uuid, UInt64 freeSpaceInBytes, string createtd_at, string updated_at = null, int status_id = (int)Status.Disponible, int rack_number = 0, int port_number = 0)
         {
             this.name = name;
             this.uuid = uuid;

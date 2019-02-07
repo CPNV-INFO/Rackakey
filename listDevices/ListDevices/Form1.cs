@@ -13,7 +13,7 @@ using System.IO.Ports;
 using System.Collections.ObjectModel;
 using System.Management;
 using USBClassLibrary;
-
+using System.Runtime.InteropServices;
 
 
 
@@ -35,11 +35,10 @@ namespace ListDevices
         delegate void GetResponse(List<string> stringList);
         #endregion
 
-        #region variables
-        List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
-        bool MyUSBDeviceConnected;
-        #endregion
 
+        List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
+
+        #region public methods
         /// <summary>
         /// Constructor of Form1
         /// </summary>
@@ -47,6 +46,7 @@ namespace ListDevices
         {
             InitializeComponent();
         }
+        #endregion
 
         #region private methods
         private void Form1_Load(object sender, EventArgs e)
@@ -61,31 +61,8 @@ namespace ListDevices
             //USB Connection
             USBPort = new USBClass();
             ListOfUSBDeviceProperties = new List<USBClass.DeviceProperties>();
-           // USBPort.USBDeviceAttached += new USBClass.USBDeviceEventHandler(USBPort_USBDeviceAttached);
-            //USBPort.USBDeviceRemoved += new USBClass.USBDeviceEventHandler(USBPort_USBDeviceRemoved);
-            USBPort.RegisterForDeviceChange(true, this.Handle);
-          //  USBTryMyDeviceConnection();
-            MyUSBDeviceConnected = false;
-        }
+         
 
-        public List<USBDeviceInfo> GetUSBDevices()
-        {
-            List<USBDeviceInfo> devices = new List<USBDeviceInfo>();
-
-            ManagementObjectCollection collection;
-            using (var searcher = new ManagementObjectSearcher(@"Select * From Win32_USBHub"))
-                collection = searcher.Get();
-
-            foreach (var device in collection)
-            {
-                devices.Add(new USBDeviceInfo(
-                (string)device.GetPropertyValue("DeviceID"),
-                (string)device.GetPropertyValue("Name")
-                ));
-            }
-
-            collection.Dispose();
-            return devices;
         }
 
 
@@ -95,60 +72,24 @@ namespace ListDevices
         private void GetDevices()
         {
             List<string> devices = new List<string>();
-            string VID = "";
-            string PID = "";
+         
 
             while(true)
             {
                 devices.Clear();
 
                 try
-                {
-                    var usbDevices = GetUSBDevices();
-
-                    //list every USB device
-                    foreach (var usbDevice in usbDevices)
-                    {
-                        
-                        if(usbDevice.Name == USB_DEVICE_NAME)
-                        {
-                            VID = usbDevice.DeviceID.Substring(9, 4);
-                            PID = usbDevice.DeviceID.Substring(18, 4);
-
-                            if(USBClass.GetUSBDevice(uint.Parse(VID, System.Globalization.NumberStyles.AllowHexSpecifier), uint.Parse(PID, System.Globalization.NumberStyles.AllowHexSpecifier), ref ListOfUSBDeviceProperties, false))
-                            {
-
-
-                                //My Device is attached
-                                lblNbUsbKeys.Text = "Number of found devices: " + ListOfUSBDeviceProperties.Count.ToString();
-                                /*FoundDevicesComboBox.Items.Clear();
-                                for (int i = 0; i < ListOfUSBDeviceProperties.Count; i++)
-                                {
-                                    FoundDevicesComboBox.Items.Add("Device " + i.ToString());
-                                }
-                                FoundDevicesComboBox.Enabled = (ListOfUSBDeviceProperties.Count > 1);
-                                FoundDevicesComboBox.SelectedIndex = 0;*/
-
-                                
-                            }
-
-
-                            Console.WriteLine("Device ID: {0}", usbDevice.DeviceID);
-                        }
-                    }
-
-                    Console.Read();
-
+                { 
                     foreach (DriveInfo drive in DriveInfo.GetDrives())
                     {
                         // if the device is an removable device (USB, external drive), add it to the list
-                        if (drive.DriveType == DriveType.Removable) 
+                        if (drive.DriveType == DriveType.Removable)
                         {
                             devices.Add(string.Format("({0}) {1}", drive.Name.Replace("\\", ""), drive.VolumeLabel));
 
-                            //UsbKey usbKey = new UsbKey(drive.VolumeLabel, drive.id)
-                            
-                            //db.AddUsb(drive.VolumeLabel);
+                            UsbKey usbKey = new UsbKey(drive.VolumeLabel, "null", (UInt64)drive.AvailableFreeSpace, DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+
+                            db.AddUsbKey(usbKey); //try to add a usb in DB      
                         }
                     }
 
@@ -178,6 +119,7 @@ namespace ListDevices
         /// <param name="devices"></param>
         private void DisplayResponse(List<string> devices)
         {
+            //if the number of usb devices is different : clean the list of devices
             if(devices.Count != lstDevices.Items.Count)
             {
                 lstDevices.DataSource = null;
@@ -186,14 +128,16 @@ namespace ListDevices
             lstDevices.DataSource = devices;
         }
 
+
+        /// <summary>
+        /// Event when the form is under closing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             thread.Abort();
         }
-
-        #endregion
-
-        #region USB
 
         #endregion
     }

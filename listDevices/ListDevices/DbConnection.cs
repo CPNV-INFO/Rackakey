@@ -55,6 +55,8 @@ namespace ListDevices
                     command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
 
                     command.ExecuteNonQuery();
+
+                    usbKeyExist = true;
                 }
             }
 
@@ -94,29 +96,29 @@ namespace ListDevices
         {
             List<UsbKey> usbKeys = new List<UsbKey>();
 
-            MySqlCommand command = this.connection.CreateCommand();
-
-            command.CommandText = "SELECT * FROM usbs";
-
-            MySqlDataReader reader = command.ExecuteReader();
-
-            while(reader.Read())
+            try
             {
-                UsbKey usbKey = new UsbKey
-                    (
-                        reader.GetString("name"),
-                        reader.GetString("uuid"),
-                        reader.GetInt32("freeSpaceInBytes"),
-                        reader.GetDateTime("created_at"),
-                        reader.GetDateTime("updated_at"),
-                        reader.GetInt32("status_id"),
-                        reader.GetInt32("rack_number"),
-                        reader.GetInt32("port_number")
-                    );
+                MySqlCommand command = this.connection.CreateCommand(); // init a new request to DB
 
-                usbKeys.Add(usbKey);
+                command.CommandText = "SELECT * FROM usbs"; //request
+
+                MySqlDataReader reader = command.ExecuteReader(); // get all usb in usbs table
+
+                while (reader.Read())
+                {
+                    UsbKey usbKey = new UsbKey(reader.GetString("name"), reader.GetString("uuid"), reader.GetUInt64("freeSpaceInBytes"), reader.GetString("created_at"));
+                 
+                    usbKeys.Add(usbKey);
+                }
+
+                reader.Close();
+            }
+            catch(Exception exc)
+            {
+                Console.WriteLine("L'exception suivante est apparue : " + exc);
             }
 
+            
 
             return usbKeys;
 
