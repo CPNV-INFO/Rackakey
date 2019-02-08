@@ -19,18 +19,6 @@ namespace ListDevices
         }
 
         /// <summary>
-        /// Init the connection to MySql DB
-        /// </summary>
-        private void InitConnection()
-        {
-            string connection = "SERVER=127.0.0.1; DATABASE=rackakey; UID=root; PASSWORD=";
-            this.connection = new MySqlConnection(connection);
-            this.connection.Open();
-        }
-
-
-
-        /// <summary>
         /// Add a new usb Key if the key already exist update it
         /// </summary>
         /// <param name="newUsbKey"></param>
@@ -48,11 +36,12 @@ namespace ListDevices
                 {
                     MySqlCommand command = this.connection.CreateCommand();
 
-                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number WHERE name = @name";
+                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number, freeSpaceInBytes = @freeSpaceInBytes WHERE name = @name";
 
                     command.Parameters.AddWithValue("@name", newUsbKey.Name);
                     command.Parameters.AddWithValue("@rack_number", newUsbKey.Rack_number);
                     command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
+                    command.Parameters.AddWithValue("@freeSpaceInBytes", newUsbKey.FreeSpaceInBytes);
 
                     command.ExecuteNonQuery();
 
@@ -89,10 +78,32 @@ namespace ListDevices
         }
 
         /// <summary>
+        /// Reset the port and hub of every usb keys
+        /// </summary>
+        public void ResetLocation()
+        {
+            MySqlCommand command = this.connection.CreateCommand();
+
+            command.CommandText = "UPDATE usbs set rack_number = 0, port_number = 0";
+
+            command.ExecuteNonQuery();
+        }
+
+        /// <summary>
+        /// Init the connection to MySql DB
+        /// </summary>
+        private void InitConnection()
+        {
+            string connection = "SERVER=127.0.0.1; DATABASE=rackakey; UID=root; PASSWORD=";
+            this.connection = new MySqlConnection(connection);
+            this.connection.Open();
+        }
+
+        /// <summary>
         /// Get all usb keys in the usbs table 
         /// </summary>
         /// <returns></returns>
-        public List<UsbKey> GetUsbKeys()
+        private List<UsbKey> GetUsbKeys()
         {
             List<UsbKey> usbKeys = new List<UsbKey>();
 
@@ -106,7 +117,7 @@ namespace ListDevices
 
                 while (reader.Read())
                 {
-                    UsbKey usbKey = new UsbKey(reader.GetString("name"), reader.GetString("uuid"), reader.GetUInt64("freeSpaceInBytes"), reader.GetString("created_at"));
+                    UsbKey usbKey = new UsbKey(reader.GetString("name"), reader.GetString("uuid"), reader.GetUInt64("freeSpaceInBytes"), reader.GetString("created_at"), reader.GetInt32("port_number"), reader.GetInt32("rack_number"));
                  
                     usbKeys.Add(usbKey);
                 }

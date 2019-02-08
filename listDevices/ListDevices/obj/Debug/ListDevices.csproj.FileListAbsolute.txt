@@ -21,5 +21,4 @@ C:\Rackakey\listDevices\ListDevices\obj\Debug\ListDevices.pdb
 C:\Rackakey\listDevices\ListDevices\bin\Debug\MySql.Data.dll
 C:\Rackakey\listDevices\ListDevices\bin\Debug\MySql.Web.dll
 C:\Rackakey\listDevices\ListDevices\obj\Debug\ListDevices.csproj.CopyComplete
-C:\Rackakey\listDevices\ListDevices\bin\Debug\USBClassLibrary.dll
-C:\Rackakey\listDevices\ListDevices\bin\Debug\USBClassLibrary.pdb
+C:\Rackakey\listDevices\ListDevices\bin\Debug\System.Management.Automation.dll

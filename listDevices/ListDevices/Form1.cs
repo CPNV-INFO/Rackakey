@@ -12,8 +12,9 @@ using System.IO;
 using System.IO.Ports;
 using System.Collections.ObjectModel;
 using System.Management;
-using USBClassLibrary;
 using System.Runtime.InteropServices;
+using System.Management.Automation;
+using System.Management.Automation.Runspaces;
 
 
 
@@ -22,13 +23,12 @@ namespace ListDevices
     public partial class Form1 : Form
     {
         #region Const
-        const string USB_DEVICE_NAME = "Dispositif de stockage de masse USB";
+        private const string USB_DEVICE_NAME = "Dispositif de stockage de masse USB";
         #endregion
 
         #region class
-        Thread thread;
-        DbConnection db;
-        USBClass USBPort;
+        private Thread thread;
+        private DbConnection db;
         #endregion
 
         #region delegate
@@ -36,8 +36,7 @@ namespace ListDevices
         #endregion
 
 
-        List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
-
+        
         #region public methods
         /// <summary>
         /// Constructor of Form1
@@ -57,12 +56,6 @@ namespace ListDevices
 
             //create a new DB connection
             db = new DbConnection();
-
-            //USB Connection
-            USBPort = new USBClass();
-            ListOfUSBDeviceProperties = new List<USBClass.DeviceProperties>();
-         
-
         }
 
 
@@ -72,11 +65,16 @@ namespace ListDevices
         private void GetDevices()
         {
             List<string> devices = new List<string>();
-         
+            string[] usbLocations;
+            int i;
+            int usbPort;
+            int usbRack;
 
             while(true)
             {
                 devices.Clear();
+                i = 0;
+                usbLocations = GetUsbLocation();
 
                 try
                 { 
@@ -85,15 +83,19 @@ namespace ListDevices
                         // if the device is an removable device (USB, external drive), add it to the list
                         if (drive.DriveType == DriveType.Removable)
                         {
-                            devices.Add(string.Format("({0}) {1}", drive.Name.Replace("\\", ""), drive.VolumeLabel));
 
-                            UsbKey usbKey = new UsbKey(drive.VolumeLabel, "null", (UInt64)drive.AvailableFreeSpace, DateTime.Now.ToString("yyyy-MM-dd HH:mm"));
+                            usbPort = System.Convert.ToInt32(usbLocations[i].Substring(6, 4));
+                            usbRack = System.Convert.ToInt32(usbLocations[i].Substring(16, 4));
 
-                            db.AddUsbKey(usbKey); //try to add a usb in DB      
+                            devices.Add(string.Format("({0}) {1} - port : {2}, rack : {3}", drive.Name.Replace("\\", ""), drive.VolumeLabel, usbPort, usbRack));
+
+                            UsbKey usbKey = new UsbKey(drive.VolumeLabel, "null", (UInt64)drive.AvailableFreeSpace, DateTime.Now.ToString("yyyy-MM-dd HH:mm"), usbRack, usbPort);
+
+                            db.AddUsbKey(usbKey); //try to add a usb in DB
+
+                            i++;
                         }
                     }
-
-
                 }
                 catch(Exception exc)
                 {
@@ -113,6 +115,43 @@ namespace ListDevices
             
         }
 
+
+        /// <summary>
+        /// Get all the usb keys locations ports and racks
+        /// source : https://www.codeproject.com/Articles/18229/How-to-run-PowerShell-scripts-from-C
+        /// </summary>
+        /// <returns></returns>
+        private string[] GetUsbLocation()
+        {
+            string[] locations;
+
+            string script = "$TabDevicesId =  @(gwmi win32_USBHub | where { $_.name -like '*stockage*'}).PNPDeviceID; Foreach($valeur in $TabDevicesId) {(Get-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\$valeur\" -Name LocationInformation).LocationInformation; }";
+
+            Runspace runspace = RunspaceFactory.CreateRunspace();
+
+            runspace.Open();
+
+
+            Pipeline pipeline = runspace.CreatePipeline();
+            pipeline.Commands.AddScript(script);
+
+            pipeline.Commands.Add("Out-String");
+
+            Collection<PSObject> results = pipeline.Invoke();
+
+            runspace.Close();
+
+            StringBuilder stringBuilder = new StringBuilder();
+            foreach (PSObject obj in results)
+            {
+                stringBuilder.AppendLine(obj.ToString());
+            }
+
+            return locations = stringBuilder.ToString().Split('\n');
+
+            
+        }
+
         /// <summary>
         /// Display the actual devices on the listbox
         /// </summary>
@@ -123,6 +162,7 @@ namespace ListDevices
             if(devices.Count != lstDevices.Items.Count)
             {
                 lstDevices.DataSource = null;
+                db.ResetLocation();
             }
 
             lstDevices.DataSource = devices;
