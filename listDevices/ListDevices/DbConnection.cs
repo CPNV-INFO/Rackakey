@@ -129,8 +129,6 @@ namespace ListDevices
                 Console.WriteLine("L'exception suivante est apparue : " + exc);
             }
 
-            
-
             return usbKeys;
 
         }
