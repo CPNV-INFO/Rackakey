@@ -1,0 +1,6 @@
+C:\Rackakey\listDevices\ListDevices\USBClassLibrary\bin\Debug\USBClassLibrary.dll
+C:\Rackakey\listDevices\ListDevices\USBClassLibrary\bin\Debug\USBClassLibrary.pdb
+C:\Rackakey\listDevices\ListDevices\USBClassLibrary\obj\Debug\USBClassLibrary.csprojAssemblyReference.cache
+C:\Rackakey\listDevices\ListDevices\USBClassLibrary\obj\Debug\USBClassLibrary.csproj.CoreCompileInputs.cache
+C:\Rackakey\listDevices\ListDevices\USBClassLibrary\obj\Debug\USBClassLibrary.dll
+C:\Rackakey\listDevices\ListDevices\USBClassLibrary\obj\Debug\USBClassLibrary.pdb
