@@ -22,13 +22,12 @@ namespace ListDevices
     public partial class Form1 : Form
     {
         #region Const
-        const string USB_DEVICE_NAME = "Dispositif de stockage de masse USB";
+        private const string USB_DEVICE_NAME = "Dispositif de stockage de masse USB";
         #endregion
 
         #region class
-        Thread thread;
-        DbConnection db;
-        USBClass USBPort;
+        private Thread thread;
+        private DbConnection db;
         #endregion
 
         #region delegate
@@ -36,8 +35,7 @@ namespace ListDevices
         #endregion
 
 
-        List<USBClass.DeviceProperties> ListOfUSBDeviceProperties;
-
+        
         #region public methods
         /// <summary>
         /// Constructor of Form1
@@ -58,10 +56,7 @@ namespace ListDevices
             //create a new DB connection
             db = new DbConnection();
 
-            //USB Connection
-            USBPort = new USBClass();
-            ListOfUSBDeviceProperties = new List<USBClass.DeviceProperties>();
-         
+           
 
         }
 

@@ -48,11 +48,12 @@ namespace ListDevices
                 {
                     MySqlCommand command = this.connection.CreateCommand();
 
-                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number WHERE name = @name";
+                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number, freeSpaceInBytes = @freeSpaceInBytes WHERE name = @name";
 
                     command.Parameters.AddWithValue("@name", newUsbKey.Name);
                     command.Parameters.AddWithValue("@rack_number", newUsbKey.Rack_number);
                     command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
+                    command.Parameters.AddWithValue("@freeSpaceInBytes", newUsbKey.FreeSpaceInBytes);
 
                     command.ExecuteNonQuery();
 
