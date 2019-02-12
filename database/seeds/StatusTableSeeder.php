@@ -19,29 +19,29 @@ class StatusTableSeeder extends Seeder
             'name' => 'Non activée',
         ]);
 
-//        DB::table('statuses')->insert([
-//            'name' => 'Supprimée',
-//        ]);
-//
-//        DB::table('statuses')->insert([
-//            'name' => 'Disponible',
-//        ]);
+        DB::table('statuses')->insert([
+            'name' => 'Supprimée',
+        ]);
 
-//        DB::table('statuses')->insert([
-//            'name' => 'Présente',
-//        ]);
-//
-//        DB::table('statuses')->insert([
-//            'name' => 'Utilisée',
-//        ]);
-//
-//        DB::table('statuses')->insert([
-//            'name' => 'Absente',
-//        ]);
-//
-//        DB::table('statuses')->insert([
-//            'name' => 'Non Initialisée',
-//        ]);
+        DB::table('statuses')->insert([
+            'name' => 'Disponible',
+        ]);
+
+        DB::table('statuses')->insert([
+            'name' => 'Présente',
+        ]);
+
+        DB::table('statuses')->insert([
+            'name' => 'Utilisée',
+        ]);
+
+        DB::table('statuses')->insert([
+            'name' => 'Absente',
+        ]);
+
+        DB::table('statuses')->insert([
+            'name' => 'Non Initialisée',
+        ]);
 
     }
 }
