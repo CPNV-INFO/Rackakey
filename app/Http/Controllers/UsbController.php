@@ -12,6 +12,11 @@ use Session;
 
 class UsbController extends Controller
 {
+    protected $usbRepository;
+    protected $nbrPerPage = 4;
+
+
+
     /**
      * Remove the specified resource from storage.
      *
