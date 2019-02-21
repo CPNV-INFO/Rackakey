@@ -8,9 +8,13 @@ namespace ListDevices
 {
     public enum Status
     {
-        Disponible = 6,
-        Présente = 7,
-        Absente = 8,
-        Utilisée = 9
+        Activée = 1,
+        NonActivée = 2,
+        Supprimée = 3,
+        Disponible = 4,
+        Présente = 5,
+        Utilisée = 6,
+        Absente = 7,
+        NonInitialisée = 8
     }
 }

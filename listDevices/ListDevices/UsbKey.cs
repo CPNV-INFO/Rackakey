@@ -11,13 +11,14 @@ namespace ListDevices
         private string name;
         private string uuid;
         private UInt64 freeSpaceInBytes;
-        private int status_id;
+        private int status_id; //refer to Status enum
         private int rack_number;
         private int port_number;
         private string created_at;
         private string updated_at;
 
 
+        //set attributes to read only
         public string Name { get{ return name; } }
         public string Uuid { get { return uuid; } }
         public UInt64 FreeSpaceInBytes { get { return freeSpaceInBytes; } }
@@ -28,7 +29,7 @@ namespace ListDevices
         public string Updated_at { get { return updated_at; } }
 
 
-        public UsbKey(string name, string uuid, UInt64 freeSpaceInBytes, string createtd_at, int rack_number, int port_number, string updated_at = null, int status_id = (int)Status.Disponible)
+        public UsbKey(string name, string uuid, UInt64 freeSpaceInBytes, string createtd_at, int rack_number, int port_number, string updated_at = null, int status_id = (int)Status.Activée)
         {
             this.name = name;
             this.uuid = uuid;

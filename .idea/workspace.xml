@@ -4,8 +4,39 @@
     <list default="true" id="e40880c8-14bd-4e3f-b817-ac5d6d807f80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/listDevices/Journal de bord.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/Journal de bord.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/~$README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/.suo" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/.suo" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/Server/sqlite3/storage.ide" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/Server/sqlite3/storage.ide" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/Server/sqlite3/storage.ide-shm" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/Server/sqlite3/storage.ide-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/Server/sqlite3/storage.ide-wal" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/.vs/ListDevices/v15/Server/sqlite3/storage.ide-wal" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/DbConnection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/DbConnection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/Status.cs" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/Status.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/MSSCCPRJ.SCC" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/Properties/AssemblyInfo.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/USBClass.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/USBClassLibrary.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/USBClassLibrary.csproj.old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/USBClassLibrary.csproj.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/USBClassLibrary.csproj.vspscc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/USBClassLibrary.pfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/Warnings.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/bin/Debug/USBClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/bin/Debug/USBClassLibrary.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/obj/Debug/USBClassLibrary.csproj.CoreCompileInputs.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/obj/Debug/USBClassLibrary.csproj.FileListAbsolute.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/obj/Debug/USBClassLibrary.csprojAssemblyReference.cache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/obj/Debug/USBClassLibrary.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/USBClassLibrary/obj/Debug/USBClassLibrary.pdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/UsbKey.cs" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/UsbKey.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/bin/Debug/ListDevices.exe" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/bin/Debug/ListDevices.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/bin/Debug/ListDevices.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/bin/Debug/ListDevices.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/obj/Debug/ListDevices.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/obj/Debug/ListDevices.csprojAssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/obj/Debug/ListDevices.exe" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/obj/Debug/ListDevices.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/ListDevices/obj/Debug/ListDevices.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/listDevices/ListDevices/obj/Debug/ListDevices.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/listDevices/RackaKey_listDevices.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservation_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservation_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/reservation_show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reservation_show.blade.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server/" />
     <ignored path="$PROJECT_DIR$/vendor/composer/" />
@@ -142,16 +173,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="208" column="34" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
+            <state relative-caret-position="527">
+              <caret line="31" column="28" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="28" />
               <folding>
-                <element signature="e#40#61#0#PHP" expanded="true" />
-                <element signature="e#450#849#0#PHP" />
-                <element signature="e#1019#1463#0#PHP" />
+                <element signature="e#7#389#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/reservation_show.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="607">
+              <caret line="51" column="94" selection-start-line="51" selection-start-column="94" selection-end-line="51" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -171,7 +209,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Usb.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1320">
+            <state>
               <caret column="5" selection-start-column="5" selection-end-column="5" />
               <folding>
                 <element signature="e#23#62#0#PHP" expanded="true" />
@@ -181,37 +219,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Status.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/Reservation.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="13" column="31" selection-end-line="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/modal.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
+            <state relative-caret-position="204">
+              <caret line="12" selection-start-line="12" selection-end-line="14" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -219,10 +230,36 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/reservation_create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
-              <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+            <state relative-caret-position="17">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="727">
+              <caret line="79" selection-start-line="79" selection-end-line="79" />
+              <folding>
+                <element signature="e#40#53#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReservationController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-515">
+              <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -334,18 +371,18 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/FileController.php" />
         <option value="$PROJECT_DIR$/app/FileUpload.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/FileUploadController.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Requests/ReservationRequest.php" />
-        <option value="$PROJECT_DIR$/resources/views/reservation_show.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/filesList.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/rackakey.js" />
         <option value="$PROJECT_DIR$/resources/views/reservation_create_modal_error.blade.php" />
-        <option value="$PROJECT_DIR$/resources/views/reservation_create.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ReservationController.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/app/Repositories/UsbRepository.php" />
         <option value="$PROJECT_DIR$/resources/views/home.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/UsbController.php" />
+        <option value="$PROJECT_DIR$/resources/views/reservation_create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/reservation_show.blade.php" />
       </list>
     </option>
   </component>
@@ -447,9 +484,9 @@
       <path value="$PROJECT_DIR$/vendor/zanysoft/laravel-zip" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-7" />
+    <option name="width" value="1113" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectLevelVcsManager">
@@ -510,6 +547,13 @@
             <path>
               <item name="Rackakey" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rackakey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
               <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -522,6 +566,11 @@
               <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
               <item name="storage" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rackakey" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rackakey" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -540,7 +589,7 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../test_BDD" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="database.main" />
   </component>
@@ -607,11 +656,13 @@
       <workItem from="1550560295186" duration="67000" />
       <workItem from="1550560367179" duration="4608000" />
       <workItem from="1550570467448" duration="3086000" />
+      <workItem from="1550649526584" duration="3911000" />
+      <workItem from="1550738054241" duration="1629000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276238000" />
+    <option name="totallyTimeSpent" value="281778000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -623,10 +674,35 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="187" y="0" width="1740" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15535714" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1433902" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="npm" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Database Console" order="0" weight="0.33770493" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="File Transfer" order="2" sideWeight="0.49946696" visible="true" weight="0.032502707" />
+      <window_info anchor="bottom" id="Find" order="3" weight="0.32822758" />
+      <window_info anchor="bottom" id="Run" order="4" weight="0.32932165" />
+      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="8" weight="0.2830601" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32896176" />
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32896176" />
+      <window_info anchor="bottom" id="Terminal" order="12" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50053304" side_tool="true" weight="0.17226435" />
+      <window_info anchor="right" id="Remote Host" order="0" weight="0.29371002" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
+      <window_info anchor="right" id="Database" order="4" weight="0.032822758" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28884026" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info id="npm" order="3" side_tool="true" />
@@ -648,45 +724,24 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.017857144" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26405868" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info id="npm" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Database Console" order="0" weight="0.33770493" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="File Transfer" order="2" sideWeight="0.49946696" visible="true" weight="0.17226435" />
-      <window_info anchor="bottom" id="Find" order="3" weight="0.32896176" />
-      <window_info anchor="bottom" id="Run" order="4" />
-      <window_info anchor="bottom" id="Debug" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="8" weight="0.2830601" />
-      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="10" weight="0.32896176" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" />
-      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50053304" side_tool="true" weight="0.17226435" />
-      <window_info anchor="right" id="Remote Host" order="0" weight="0.29371002" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.18765281" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.032822758" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php</url>
+          <line>43</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/usbActionButtons/download.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="637">
@@ -837,13 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_01_10_290000_create_files_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -889,16 +937,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="727">
-          <caret line="79" selection-start-line="79" selection-end-line="79" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.mix.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -906,24 +944,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReservationController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileUploadController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reservation_show.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="59" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
         </state>
       </provider>
     </entry>
@@ -955,13 +979,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/app/Repositories/UsbRepository.php" />
+    <entry file="file://$PROJECT_DIR$/app/Status.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="41" column="68" selection-start-line="41" selection-start-column="68" selection-end-line="41" selection-end-column="68" />
-          <folding>
-            <element signature="e#7#389#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -972,10 +994,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/reservation_create.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
-          <caret line="79" column="7" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+        <state relative-caret-position="221">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="e#40#61#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/modal.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -986,19 +1025,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Status.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/reservation_create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+        <state relative-caret-position="17">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/modal.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Controller.php">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Requests/ReservationRequest.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1010,23 +1045,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Repositories/UsbRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="1" selection-start-line="25" selection-start-column="1" selection-end-line="25" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="13" column="31" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Usb.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1320">
+        <state>
           <caret column="5" selection-start-column="5" selection-end-column="5" />
           <folding>
             <element signature="e#23#62#0#PHP" expanded="true" />
@@ -1034,15 +1055,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UsbController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/home.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="208" column="34" selection-start-line="208" selection-start-column="34" selection-end-line="208" selection-end-column="34" />
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="14" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/reservation_show.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="51" column="94" selection-start-line="51" selection-start-column="94" selection-end-line="51" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="28" />
           <folding>
-            <element signature="e#40#61#0#PHP" expanded="true" />
-            <element signature="e#450#849#0#PHP" />
-            <element signature="e#1019#1463#0#PHP" />
+            <element signature="e#7#389#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/FileController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="727">
+          <caret line="79" selection-start-line="79" selection-end-line="79" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ReservationController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-515">
+          <caret line="124" column="55" selection-start-line="124" selection-start-column="55" selection-end-line="124" selection-end-column="55" />
         </state>
       </provider>
     </entry>

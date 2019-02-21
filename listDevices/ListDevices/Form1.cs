@@ -67,37 +67,36 @@ namespace ListDevices
         private void GetDevices()
         {
             List<string> devices = new List<string>();
+            DriveInfo[] connectedDrives;
             string[] usbLocations;
-            int i;
             int usbPort;
             int usbRack;
 
             while(true)
             {
                 devices.Clear();
-                i = 0;
+              
                 usbLocations = GetUsbLocation();
+                //Array.Reverse(usbLocations, 0, usbLocations.Length);
+                
+
 
                 try
-                { 
-                    foreach (DriveInfo drive in DriveInfo.GetDrives())
+                {
+                    for(int i = 0; i < usbLocations.Length-2; i++)
                     {
-                        // if the device is an removable device (USB, external drive), add it to the list
-                        if (drive.DriveType == DriveType.Removable)
-                        {
+                        usbPort = System.Convert.ToInt32(usbLocations[i].Substring(6, 4)); //get the port n° of the USB key
+                        usbRack = System.Convert.ToInt32(usbLocations[i].Substring(16, 4)); //get the rack n° of the USB key
 
-                            usbPort = System.Convert.ToInt32(usbLocations[i].Substring(6, 4));
-                            usbRack = System.Convert.ToInt32(usbLocations[i].Substring(16, 4));
+                        i++;
 
-                            devices.Add(string.Format("({0}) {1} - port : {2}, rack : {3}", drive.Name.Replace("\\", ""), drive.VolumeLabel, usbPort, usbRack));
+                        devices.Add(string.Format("id : {0} - port : {1}, hub : {2}", usbLocations[i], usbPort, usbRack)); 
 
-                            UsbKey usbKey = new UsbKey(drive.VolumeLabel, "null", (UInt64)drive.AvailableFreeSpace, DateTime.Now.ToString("yyyy-MM-dd HH:mm"), usbRack, usbPort);
+                        UsbKey usbKey = new UsbKey("", usbLocations[i], 0, DateTime.Now.ToString("yyyy-MM-dd HH:mm"), usbRack, usbPort);//create a new USB key 
 
-                            db.AddUsbKey(usbKey); //try to add a usb in DB
-
-                            i++;
-                        }
+                        db.AddUsbKey(usbKey); //try to add the USB key in DB
                     }
+
                 }
                 catch(Exception exc)
                 {
@@ -127,7 +126,9 @@ namespace ListDevices
         {
             string[] locations;
 
-            string script = "$TabDevicesId =  @(gwmi win32_USBHub | where { $_.name -like '*stockage*'}).PNPDeviceID; Foreach($valeur in $TabDevicesId) {(Get-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\$valeur\" -Name LocationInformation).LocationInformation; }";
+            //insert your powershell script here
+           // string script = "$TabDevicesId =  @(gwmi win32_USBHub | where { $_.name -like '*stockage*'}).PNPDeviceID; Foreach($valeur in $TabDevicesId) {(Get-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\$valeur\" -Name LocationInformation).LocationInformation; }";
+            string script = "$TabDevicesId =  @(gwmi win32_USBHub | where { $_.name -like '*stockage*'}).PNPDeviceID; Foreach($valeur in $TabDevicesId) {(Get-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\$valeur\" -Name LocationInformation).LocationInformation; (Get-ItemProperty -Path \"HKLM:\\SYSTEM\\CurrentControlSet\\Enum\\$valeur\" -Name ContainerID).ContainerID;}";
 
             Runspace runspace = RunspaceFactory.CreateRunspace();
 

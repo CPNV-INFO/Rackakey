@@ -6,7 +6,7 @@
 
 
 <div class="reservation-btn-container flex-row justify-content-start align-items-start mb-3 w-75">
-    <a href="/" class="btn btn-lg btn-dark" name="addreservation">Retour</a>
+    <a href="javascript:history.back()" class="btn btn-lg btn-dark" name="addreservation">Retour</a>
 </div>
 
 <form method="post" action="reservation" enctype="multipart/form-data">

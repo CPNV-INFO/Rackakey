@@ -32,13 +32,13 @@ namespace ListDevices
             foreach (UsbKey usbKey in usbKeys)
             {
                 //if the key already exist update his rack and is port
-                if (usbKey.Name == newUsbKey.Name)
+                if (usbKey.Uuid == newUsbKey.Uuid)
                 {
                     MySqlCommand command = this.connection.CreateCommand();
 
-                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number, freeSpaceInBytes = @freeSpaceInBytes WHERE name = @name";
+                    command.CommandText = "UPDATE usbs set rack_number = @rack_number, port_number = @port_number, freeSpaceInBytes = @freeSpaceInBytes WHERE uuid = @uuid";
 
-                    command.Parameters.AddWithValue("@name", newUsbKey.Name);
+                    command.Parameters.AddWithValue("@uuid", newUsbKey.Uuid);
                     command.Parameters.AddWithValue("@rack_number", newUsbKey.Rack_number);
                     command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
                     command.Parameters.AddWithValue("@freeSpaceInBytes", newUsbKey.FreeSpaceInBytes);
@@ -56,6 +56,7 @@ namespace ListDevices
                 {
                     MySqlCommand command = this.connection.CreateCommand(); //create a new request for DB
 
+                    //command for DB
                     command.CommandText = "INSERT INTO usbs (name, uuid, freeSpaceInBytes, status_id, rack_number, port_number, created_at) VALUES (@name, @uuid, @freeSpaceInBytes, @status_id, @rack_number, @port_number, @created_at)";
 
                     command.Parameters.AddWithValue("@name", newUsbKey.Name);
@@ -66,7 +67,7 @@ namespace ListDevices
                     command.Parameters.AddWithValue("@port_number", newUsbKey.Port_number);
                     command.Parameters.AddWithValue("@created_at", newUsbKey.Created_at);
 
-                    command.ExecuteNonQuery(); 
+                    command.ExecuteNonQuery(); //Execute command
                 }
                 catch (Exception exc)
                 {

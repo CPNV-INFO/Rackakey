@@ -15,6 +15,10 @@ class UsbController extends Controller
     protected $usbRepository;
     protected $nbrPerPage = 4;
 
+    public function index()
+    {
+
+    }
 
 
     /**

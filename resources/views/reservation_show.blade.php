@@ -6,7 +6,7 @@
 
 
 <div class="reservation-btn-container flex-row justify-content-start align-items-start mb-3 w-75">
-    <a href="/" class="btn btn-lg btn-dark" name="addreservation">Retour</a>
+    <a href="javascript:history.back()" class="btn btn-lg btn-dark" name="addreservation">Retour</a>
 </div>
 
 <table class="reservation-table mt-2">
@@ -17,6 +17,7 @@
         <th class="">Date réservation clôturée</th>
         <th class="">Nombre de fichiers</th>
         <th class="">Fichiers envoyés sur la/les clé(s)</th>
+        <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -43,6 +44,12 @@
                         <button class="btn btn-dark" type="submit">Télécharger</button>
                     </form>
                 @endif
+
+
+
+            </td>
+            <td>
+                <button class="btn btn-dark"><a href="returnReservation" style="color: #FFFFFF;">Terminer</a></button>
             </td>
         </tr>
     @endforeach
